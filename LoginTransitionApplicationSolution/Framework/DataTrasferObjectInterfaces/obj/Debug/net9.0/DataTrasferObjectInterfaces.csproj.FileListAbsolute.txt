@@ -1,0 +1,12 @@
+C:\Users\clash\motor-sich-learning\Framework\FrameworkProjects\DataTrasferObjectInterfaces\bin\Debug\net9.0\DataTrasferObjectInterfaces.deps.json
+C:\Users\clash\motor-sich-learning\Framework\FrameworkProjects\DataTrasferObjectInterfaces\bin\Debug\net9.0\DataTrasferObjectInterfaces.dll
+C:\Users\clash\motor-sich-learning\Framework\FrameworkProjects\DataTrasferObjectInterfaces\bin\Debug\net9.0\DataTrasferObjectInterfaces.pdb
+C:\Users\clash\motor-sich-learning\Framework\FrameworkProjects\DataTrasferObjectInterfaces\obj\Debug\net9.0\DataTrasferObjectInterfaces.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\clash\motor-sich-learning\Framework\FrameworkProjects\DataTrasferObjectInterfaces\obj\Debug\net9.0\DataTrasferObjectInterfaces.AssemblyInfoInputs.cache
+C:\Users\clash\motor-sich-learning\Framework\FrameworkProjects\DataTrasferObjectInterfaces\obj\Debug\net9.0\DataTrasferObjectInterfaces.AssemblyInfo.cs
+C:\Users\clash\motor-sich-learning\Framework\FrameworkProjects\DataTrasferObjectInterfaces\obj\Debug\net9.0\DataTrasferObjectInterfaces.csproj.CoreCompileInputs.cache
+C:\Users\clash\motor-sich-learning\Framework\FrameworkProjects\DataTrasferObjectInterfaces\obj\Debug\net9.0\DataTrasferObjectInterfaces.sourcelink.json
+C:\Users\clash\motor-sich-learning\Framework\FrameworkProjects\DataTrasferObjectInterfaces\obj\Debug\net9.0\DataTrasferObjectInterfaces.dll
+C:\Users\clash\motor-sich-learning\Framework\FrameworkProjects\DataTrasferObjectInterfaces\obj\Debug\net9.0\refint\DataTrasferObjectInterfaces.dll
+C:\Users\clash\motor-sich-learning\Framework\FrameworkProjects\DataTrasferObjectInterfaces\obj\Debug\net9.0\DataTrasferObjectInterfaces.pdb
+C:\Users\clash\motor-sich-learning\Framework\FrameworkProjects\DataTrasferObjectInterfaces\obj\Debug\net9.0\ref\DataTrasferObjectInterfaces.dll

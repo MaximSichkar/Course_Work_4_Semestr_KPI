@@ -1,0 +1,132 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\clash\\CourseWork\\LoginTransitionApplicationSolution\\Solution\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5339C260-1032-A817-143D-3AAD25915160}|..\\LayerProjects\\Account.BL\\Account.BL.csproj|c:\\users\\clash\\coursework\\logintransitionapplicationsolution\\layerprojects\\account.bl\\logging\\loggingtransitionhandler\\loggingtransitionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5339C260-1032-A817-143D-3AAD25915160}|..\\LayerProjects\\Account.BL\\Account.BL.csproj|c:\\users\\clash\\coursework\\logintransitionapplicationsolution\\layerprojects\\account.bl\\logging\\iloggingtransitionhandler\\iloggingtransitionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937D9F8A-758B-7023-72C2-8C68DA9671EB}|..\\LayerProjects\\Account.VM\\Account.VM.csproj|c:\\users\\clash\\coursework\\logintransitionapplicationsolution\\layerprojects\\account.vm\\account.vm.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F201FE8F-B1BE-2B41-B188-6179DF902172}|..\\LayerProjects\\Account.DPL\\Account.DPL.csproj|c:\\users\\clash\\coursework\\logintransitionapplicationsolution\\layerprojects\\account.dpl\\account.dpl.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21916D33-66CC-D309-AEA2-6B1C656B5A76}|..\\LayerProjects\\Account.DAL\\Account.DAL.csproj|c:\\users\\clash\\coursework\\logintransitionapplicationsolution\\layerprojects\\account.dal\\account.dal.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5339C260-1032-A817-143D-3AAD25915160}|..\\LayerProjects\\Account.BL\\Account.BL.csproj|c:\\users\\clash\\coursework\\logintransitionapplicationsolution\\layerprojects\\account.bl\\account.bl.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoggingTransitionHandler.cs",
+              "DocumentMoniker": "C:\\Users\\clash\\CourseWork\\LoginTransitionApplicationSolution\\LayerProjects\\Account.BL\\Logging\\LoggingTransitionHandler\\LoggingTransitionHandler.cs",
+              "RelativeDocumentMoniker": "..\\LayerProjects\\Account.BL\\Logging\\LoggingTransitionHandler\\LoggingTransitionHandler.cs",
+              "ToolTip": "C:\\Users\\clash\\CourseWork\\LoginTransitionApplicationSolution\\LayerProjects\\Account.BL\\Logging\\LoggingTransitionHandler\\LoggingTransitionHandler.cs",
+              "RelativeToolTip": "..\\LayerProjects\\Account.BL\\Logging\\LoggingTransitionHandler\\LoggingTransitionHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T16:24:29.783Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ILoggingTransitionHandler.cs",
+              "DocumentMoniker": "C:\\Users\\clash\\CourseWork\\LoginTransitionApplicationSolution\\LayerProjects\\Account.BL\\Logging\\ILoggingTransitionHandler\\ILoggingTransitionHandler.cs",
+              "RelativeDocumentMoniker": "..\\LayerProjects\\Account.BL\\Logging\\ILoggingTransitionHandler\\ILoggingTransitionHandler.cs",
+              "ToolTip": "C:\\Users\\clash\\CourseWork\\LoginTransitionApplicationSolution\\LayerProjects\\Account.BL\\Logging\\ILoggingTransitionHandler\\ILoggingTransitionHandler.cs",
+              "RelativeToolTip": "..\\LayerProjects\\Account.BL\\Logging\\ILoggingTransitionHandler\\ILoggingTransitionHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T16:24:26.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Account.VM",
+              "DocumentMoniker": "C:\\Users\\clash\\CourseWork\\LoginTransitionApplicationSolution\\LayerProjects\\Account.VM\\Account.VM.csproj",
+              "RelativeDocumentMoniker": "..\\LayerProjects\\Account.VM\\Account.VM.csproj",
+              "ToolTip": "C:\\Users\\clash\\CourseWork\\LoginTransitionApplicationSolution\\LayerProjects\\Account.VM\\Account.VM.csproj",
+              "RelativeToolTip": "..\\LayerProjects\\Account.VM\\Account.VM.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-24T16:24:07.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Account.DPL",
+              "DocumentMoniker": "C:\\Users\\clash\\CourseWork\\LoginTransitionApplicationSolution\\LayerProjects\\Account.DPL\\Account.DPL.csproj",
+              "RelativeDocumentMoniker": "..\\LayerProjects\\Account.DPL\\Account.DPL.csproj",
+              "ToolTip": "C:\\Users\\clash\\CourseWork\\LoginTransitionApplicationSolution\\LayerProjects\\Account.DPL\\Account.DPL.csproj",
+              "RelativeToolTip": "..\\LayerProjects\\Account.DPL\\Account.DPL.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-24T16:24:03.749Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Account.DAL",
+              "DocumentMoniker": "C:\\Users\\clash\\CourseWork\\LoginTransitionApplicationSolution\\LayerProjects\\Account.DAL\\Account.DAL.csproj",
+              "RelativeDocumentMoniker": "..\\LayerProjects\\Account.DAL\\Account.DAL.csproj",
+              "ToolTip": "C:\\Users\\clash\\CourseWork\\LoginTransitionApplicationSolution\\LayerProjects\\Account.DAL\\Account.DAL.csproj",
+              "RelativeToolTip": "..\\LayerProjects\\Account.DAL\\Account.DAL.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-24T16:23:58.21Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Account.BL",
+              "DocumentMoniker": "C:\\Users\\clash\\CourseWork\\LoginTransitionApplicationSolution\\LayerProjects\\Account.BL\\Account.BL.csproj",
+              "RelativeDocumentMoniker": "..\\LayerProjects\\Account.BL\\Account.BL.csproj",
+              "ToolTip": "C:\\Users\\clash\\CourseWork\\LoginTransitionApplicationSolution\\LayerProjects\\Account.BL\\Account.BL.csproj",
+              "RelativeToolTip": "..\\LayerProjects\\Account.BL\\Account.BL.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-24T16:23:38.511Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

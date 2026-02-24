@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "DataTransferObjects/1.0.0": {
+        "dependencies": {
+          "DataTrasferObjectInterfaces": "1.0.0"
+        },
+        "runtime": {
+          "DataTransferObjects.dll": {}
+        }
+      },
+      "DataTrasferObjectInterfaces/1.0.0": {
+        "runtime": {
+          "DataTrasferObjectInterfaces.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DataTransferObjects/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DataTrasferObjectInterfaces/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
