@@ -1,6 +1,6 @@
 ﻿namespace Cache
 {
-    public class Class1
+    public static class Cache
     {
 
     }

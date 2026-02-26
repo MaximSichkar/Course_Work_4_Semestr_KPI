@@ -1,7 +1,6 @@
 ﻿namespace Router
 {
-    public class Class1
+    public class Router
     {
-
     }
 }

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\DataTransferObjects\DataTransferObjects.csproj" />
+  </ItemGroup>
+
 </Project>
