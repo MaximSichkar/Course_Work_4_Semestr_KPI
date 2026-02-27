@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Framework\FrameworkProjects\DataTrasferObjectInterfaces\DataTrasferObjectInterfaces.csproj" />
-    <ProjectReference Include="..\Account.CoreComponents\Account.CoreComponents.csproj" />
+    <ProjectReference Include="..\..\Core\Account.Core\Account.CoreComponents.csproj" />
+    <ProjectReference Include="..\..\Framework\DataTrasferObjectInterfaces\DataTrasferObjectInterfaces.csproj" />
   </ItemGroup>
 
 </Project>

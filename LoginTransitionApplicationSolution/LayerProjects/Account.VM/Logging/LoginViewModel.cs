@@ -1,5 +1,4 @@
-﻿using Account.MOD;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Windows.Input;
 
@@ -23,6 +22,11 @@ namespace Account.VM
             LoggingTransitionHandler = loggingTransitionHandler;
         }
 
+        public LoginViewModel(ManagmentSystemEvents managmentSystemEvents)
+        {
+            _managmentSystemEvents = managmentSystemEvents;
+        }
+
         #endregion
 
         #region Data Fields        
@@ -32,6 +36,11 @@ namespace Account.VM
         /// </summary>
         [ObservableProperty]
         public string? notificationMessage;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public readonly ManagmentSystemEvents _managmentSystemEvents;
 
         /// <summary>
         /// Command for window loading
@@ -51,7 +60,7 @@ namespace Account.VM
             CreateNewDataContainer();
             AddMetaDataToDataContainer();
             AddSearchAccountDTOToDataContainer();
-            SendRequestToApplicationNextLayer();
+            GoToManagmentSystem();
             GetLoginResult();
             GetMessageFromeResponse();
 

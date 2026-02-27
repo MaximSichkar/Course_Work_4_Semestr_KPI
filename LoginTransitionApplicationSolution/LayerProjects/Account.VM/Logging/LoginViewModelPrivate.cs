@@ -1,10 +1,5 @@
-﻿using Account.CON;
-using Account.DTO;
-using Account.MOD;
-using CommunityToolkit.Mvvm.ComponentModel;
-using DataTransferObjects;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using DataTrasferObjectInterfaces;
-using MaSystem.Orchestration;
 
 namespace Account.VM
 {
@@ -90,9 +85,9 @@ namespace Account.VM
         /// <summary>
         /// Sends request to next layer of logic
         /// </summary>
-        private void SendRequestToApplicationNextLayer()
+        private void GoToManagmentSystem()
         {
-            LoggingTransitionHandler.ProcessRequest(DataContainer);
+            _managmentSystemEvents.Raise(DataContainer);
         }
 
         /// <summary>
