@@ -1,4 +1,8 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Account.CON;
+using Account.DTO;
+using Account.MOD;
+using CommunityToolkit.Mvvm.ComponentModel;
+using DataTransferObjects;
 using DataTrasferObjectInterfaces;
 
 namespace Account.VM
@@ -95,13 +99,7 @@ namespace Account.VM
         /// </summary>
         private void AddMetaDataToDataContainer()
         {
-            MetaDataDTO metaDataDTO = new MetaDataDTO();
-
-            metaDataDTO.TransitionName = TransitionContract.LOGGING;
-            metaDataDTO.StateName = StateContract.LOGIN;
-            metaDataDTO.UseCaseName = UseCaseContract.ACCOUNT;
-
-            DataContainer.AddDTOToDataContainer(metaDataDTO, TableTypes.META_DATA);
+            DataContainer.AddDTOToDataContainer(MetaDataDTO.Create(UseCaseContract.ACCOUNT, TransitionContract.LOGGING, StateContract.LOGIN, LayerContract.BL), TableTypes.META_DATA);
         }
 
         /// <summary>

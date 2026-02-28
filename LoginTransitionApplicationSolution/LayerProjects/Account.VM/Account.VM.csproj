@@ -11,7 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Solution\Events\Events.csproj" />
+    <ProjectReference Include="..\..\Contract\Account.CON.csproj" />
+    <ProjectReference Include="..\..\Data\Account.DTO\Account.DTO.csproj" />
+    <ProjectReference Include="..\..\Framework\DataTransferObjects\DataTransferObjects.csproj" />
+    <ProjectReference Include="..\..\Models\Account.MOD\Account.MOD.csproj" />
+    <ProjectReference Include="..\..\Solution\Events\ApplicationEvents.csproj" />
   </ItemGroup>
 
 </Project>
