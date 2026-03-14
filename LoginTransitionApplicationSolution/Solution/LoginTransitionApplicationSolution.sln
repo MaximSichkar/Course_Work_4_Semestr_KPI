@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Account.VM", "..\LayerProje
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Builder", "..\ServiceProjects\Builder\Builder.csproj", "{F6756A41-F293-7E1D-D5E9-EA394DF34B1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cache", "..\ServiceProjects\Cache\Cache.csproj", "{9BBB923F-E27C-EE2B-B790-417DB20FDE6F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orchestration", "..\ServiceProjects\Cache\Orchestration.csproj", "{9BBB923F-E27C-EE2B-B790-417DB20FDE6F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Router", "..\ServiceProjects\Router\Router.csproj", "{B16D9918-97B1-9D1B-F58B-46929B4BCAC2}"
 EndProject

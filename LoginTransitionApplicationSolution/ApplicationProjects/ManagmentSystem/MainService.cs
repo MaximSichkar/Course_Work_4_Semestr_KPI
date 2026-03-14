@@ -1,4 +1,5 @@
-﻿using DataTrasferObjectInterfaces;
+﻿using ApplicationEvents;
+using DataTrasferObjectInterfaces;
 
 namespace ManagmentSystem
 {

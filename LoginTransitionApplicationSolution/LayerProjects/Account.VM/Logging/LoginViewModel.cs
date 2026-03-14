@@ -23,11 +23,6 @@ namespace Account.VM
             LoggingTransitionHandler = loggingTransitionHandler;
         }
 
-        public LoginViewModel(ManagmentSystemEvents managmentSystemEvents)
-        {
-            _managmentSystemEvents = managmentSystemEvents;
-        }
-
         #endregion
 
         #region Data Fields        
@@ -41,7 +36,7 @@ namespace Account.VM
         /// <summary>
         /// 
         /// </summary>
-        public readonly ManagmentSystemEvents _managmentSystemEvents;
+        public readonly ManagmentSystemEvents _managmentSystemEvents = new ManagmentSystemEvents();
 
         /// <summary>
         /// Command for window loading
@@ -61,7 +56,7 @@ namespace Account.VM
             CreateNewDataContainer();
             AddMetaDataToDataContainer();
             AddSearchAccountDTOToDataContainer();
-            GoToManagmentSystem();
+            SendRequestToNextApplicationLayer();
             GetLoginResult();
             GetMessageFromeResponse();
 

@@ -1,4 +1,4 @@
-﻿namespace Cache
+﻿namespace Orchestration
 {
     public class Cache
     {
@@ -11,6 +11,11 @@
             {
                 return _applicationCache;
             }
+        }
+
+        private Cache()
+        {
+
         }
 
         public static Cache GetInstance()

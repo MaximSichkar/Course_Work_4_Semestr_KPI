@@ -4,6 +4,7 @@ using Account.MOD;
 using CommunityToolkit.Mvvm.ComponentModel;
 using DataTransferObjects;
 using DataTrasferObjectInterfaces;
+using Orchestration;
 
 namespace Account.VM
 {
@@ -27,14 +28,6 @@ namespace Account.VM
         /// </summary>
         [ObservableProperty]
         private AccountModel accountModel = default!;
-
-        /// <summary>
-        /// DI transition to the next level
-        /// </summary>
-        private Account.BL.ILoggingTransitionHandler LoggingTransitionHandler
-        {
-            get; set;
-        }
 
         /// <summary>
         /// Message DTO implementation
@@ -89,7 +82,7 @@ namespace Account.VM
         /// <summary>
         /// Sends request to next layer of logic
         /// </summary>
-        private void GoToManagmentSystem()
+        private void SendRequestToNextApplicationLayer()
         {
             _managmentSystemEvents.Raise(DataContainer);
         }
@@ -99,7 +92,7 @@ namespace Account.VM
         /// </summary>
         private void AddMetaDataToDataContainer()
         {
-            DataContainer.AddDTOToDataContainer(MetaDataDTO.Create(UseCaseContract.ACCOUNT, TransitionContract.LOGGING, StateContract.LOGIN, LayerContract.BL), TableTypes.META_DATA);
+            DataContainer.AddDTOToDataContainer(MetaDataDTO.Create(UseCaseContract.ACCOUNT, TransitionContract.LOGGING, StateContract.LOGIN, LayerContract.VM), TableTypes.META_DATA);
         }
 
         /// <summary>
@@ -146,7 +139,7 @@ namespace Account.VM
         {
             AccountDTO = DataContainer.GetDTO<AccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_RESULT_SUFFIX)!;
             AccountDTO accountDTOClone = AccountDTO.DeepClone();
-            MaSystemApplication.GetInstance().ApplicationCache.Add(UseCaseContract.CACHED_ACCOUNT, accountDTOClone);
+            Cache.GetInstance().ApplicationCache.Add(UseCaseContract.CACHED_ACCOUNT, accountDTOClone);
         }
 
         /// <summary>
