@@ -65,12 +65,12 @@ namespace DataTrasferObjectInterfaces
         }
 
         /// <summary>
-        /// Method for getting DTO from DataContainer
+        /// Method for getting first DTO from DataContainer
         /// </summary>
         /// <typeparam name="T">Type of DTO</typeparam>
         /// <param name="key">Key wich points on right DTO</param>
         /// <returns>DTO</returns>
-        public T? GetDTO<T>(string key)
+        public T? GetFirstDTO<T>(string key)
         {
             IDataCollection<T>? dataCollection = this.GetDataCollection<T>(key);
 
@@ -90,6 +90,31 @@ namespace DataTrasferObjectInterfaces
         }
 
         /// <summary>
+        /// Method for getting last DTO from DataContainer
+        /// </summary>
+        /// <typeparam name="T">Type of DTO</typeparam>
+        /// <param name="key">Key wich points on right DTO</param>
+        /// <returns>DTO</returns>
+        public T? GetLastDTO<T>(string key)
+        {
+            IDataCollection<T>? dataCollection = this.GetDataCollection<T>(key);
+
+            if (dataCollection == null)
+            {
+                return default;
+            }
+
+            if (dataCollection.Count == 0)
+            {
+                return default;
+            }
+
+            T dto = dataCollection[Count - 1];
+
+            return dto;
+        }
+
+        /// <summary>
         /// Method for deleting the last DTO in DataCollection
         /// </summary>
         /// <typeparam name="T">Type of DTO</typeparam>
@@ -101,7 +126,7 @@ namespace DataTrasferObjectInterfaces
             if (dataCollection == null || dataCollection.Count == 0)
             {
                 return;
-            }                
+            }
 
             dataCollection.RemoveAt(dataCollection.Count - 1);
         }

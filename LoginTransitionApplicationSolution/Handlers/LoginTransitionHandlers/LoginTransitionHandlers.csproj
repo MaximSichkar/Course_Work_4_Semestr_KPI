@@ -7,12 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="ApplicationSystem.cs" />
+    <Compile Remove="LoginTransitionHandler.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Contract\Account.CON.csproj" />
-    <ProjectReference Include="..\..\Solution\Events\ApplicationEvents.csproj" />
+    <None Include="LoginTransitionHandler.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\DataTrasferObjectInterfaces\DataTrasferObjectInterfaces.csproj" />
   </ItemGroup>
 
 </Project>

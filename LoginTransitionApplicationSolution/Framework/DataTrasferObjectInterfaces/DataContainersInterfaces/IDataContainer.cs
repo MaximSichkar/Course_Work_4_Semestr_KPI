@@ -25,7 +25,9 @@
         IDataCollection<T>? GetDataCollection<T>(string key);
 
 
-        T? GetDTO<T>(string key);
+        T? GetFirstDTO<T>(string key);
+
+        T? GetLastDTO<T>(string key);
 
         /// <summary>
         /// Method for deleting the last DTO in DataCollection

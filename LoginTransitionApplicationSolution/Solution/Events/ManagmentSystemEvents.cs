@@ -4,11 +4,11 @@ namespace ApplicationEvents
 {
     public class ManagmentSystemEvents
     {
-        public event Action<IDataContainer>? GoToManagmentSystem;
+        public event Action<IDataContainer>? GoToRouter;
 
-        public void Raise(IDataContainer data)
+        public void RouteRequest(IDataContainer dataContainer)
         {
-            GoToManagmentSystem?.Invoke(data);
+            GoToRouter?.Invoke(dataContainer);
         }
     }
 }

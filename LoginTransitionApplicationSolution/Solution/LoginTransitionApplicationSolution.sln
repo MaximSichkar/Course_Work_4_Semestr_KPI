@@ -57,6 +57,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contract", "Contract", "{C5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Account.CON", "..\Contract\Account.CON.csproj", "{25C3188A-3013-58C9-6971-7E4960485B6B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Handlers", "Handlers", "{F049DA3E-8377-420A-AE93-734A675E8463}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginTransitionHandlers", "..\Handlers\LoginTransitionHandlers\LoginTransitionHandlers.csproj", "{AF22A233-1255-4D5B-B7F1-0048D58BECAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +139,10 @@ Global
 		{25C3188A-3013-58C9-6971-7E4960485B6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25C3188A-3013-58C9-6971-7E4960485B6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25C3188A-3013-58C9-6971-7E4960485B6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF22A233-1255-4D5B-B7F1-0048D58BECAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF22A233-1255-4D5B-B7F1-0048D58BECAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF22A233-1255-4D5B-B7F1-0048D58BECAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF22A233-1255-4D5B-B7F1-0048D58BECAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -158,6 +166,7 @@ Global
 		{0DE6DE0D-D16A-432B-84C0-B3C058482E56} = {DDF4D92C-0B84-4206-BA16-66DF569968CF}
 		{E5D941E0-B6A4-4149-8332-5C5D76D6FDDB} = {579545C5-57A7-4525-9B45-5BF20FA3A5B5}
 		{25C3188A-3013-58C9-6971-7E4960485B6B} = {C580F3C9-542A-4D92-B5E9-CFAC2BB8BE49}
+		{AF22A233-1255-4D5B-B7F1-0048D58BECAE} = {F049DA3E-8377-420A-AE93-734A675E8463}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5029D412-02B9-45C1-88B2-22A3778A873A}

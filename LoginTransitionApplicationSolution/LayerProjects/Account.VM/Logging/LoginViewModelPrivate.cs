@@ -84,7 +84,7 @@ namespace Account.VM
         /// </summary>
         private void SendRequestToNextApplicationLayer()
         {
-            _managmentSystemEvents.Raise(DataContainer);
+            _managmentSystemEvents.RouteRequest(DataContainer);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Account.VM
         /// </summary>
         private void GetMessageFromeResponse()
         {
-            MessageDTO = DataContainer.GetDTO<MessageDTO>(TableTypes.MESSAGE)!;
+            MessageDTO = DataContainer.GetFirstDTO<MessageDTO>(TableTypes.MESSAGE)!;
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Account.VM
         {
             LoginSuccessful = false;
 
-            MetaDataDTO metaDataDTO = DataContainer.GetDTO<MetaDataDTO>(TableTypes.META_DATA)!;
+            MetaDataDTO metaDataDTO = DataContainer.GetFirstDTO<MetaDataDTO>(TableTypes.META_DATA)!;
             if (metaDataDTO.StateName == StateContract.INITIAL)
             {
                 LoginSuccessful = true;
@@ -137,7 +137,7 @@ namespace Account.VM
         /// </summary>
         private void CacheAccount()
         {
-            AccountDTO = DataContainer.GetDTO<AccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_RESULT_SUFFIX)!;
+            AccountDTO = DataContainer.GetFirstDTO<AccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_RESULT_SUFFIX)!;
             AccountDTO accountDTOClone = AccountDTO.DeepClone();
             Cache.GetInstance().ApplicationCache.Add(UseCaseContract.CACHED_ACCOUNT, accountDTOClone);
         }
