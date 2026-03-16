@@ -7,9 +7,8 @@ namespace Builder
     {
         public ApplicationSystem Build()
         {
-            ApplicationSystem application = new ApplicationSystem();
             ApplicationRouter applicationRouter = new ApplicationRouter();
-
+            ApplicationSystem application = new ApplicationSystem(applicationRouter);
             application += applicationRouter;
 
             return application;

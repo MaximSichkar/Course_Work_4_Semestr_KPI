@@ -1,9 +1,14 @@
-﻿namespace Router
+﻿using Account.CON;
+using DataTrasferObjectInterfaces;
+
+namespace Router
 {
-    public class ApplicationRouter
+    public partial class ApplicationRouter : IApplicationRouter
     {
         public void Redirect(IDataContainer dataContainer)
         {
+            GetLastMetaDataDTO();
+
             switch (MetaDataDTO.LayerName)
             {
                 case LayerContract.VM:
@@ -18,9 +23,6 @@
                 case LayerContract.DAL:
                     break;
             }
-
-            ITransitionHandler transitionHandler = _serviceProvider.GetRequiredKeyedService<ItransitionHandler>(key);
-            ManagementSystem.InitializeTransitionHandler(transitionHandler);
         }
     }
 }

@@ -1,13 +1,17 @@
 ﻿using ApplicationEvents;
 using DataTrasferObjectInterfaces;
+using Router;
 
 
 namespace ManagmentSystem
 {
     public partial class ApplicationSystem
     {
-        public ApplicationSystem()
+        private readonly IApplicationRouter _router;
+
+        public ApplicationSystem(ApplicationRouter applicationRouter)
         {
+            _router = applicationRouter;
         }
 
         public ApplicationSystem(ManagmentSystemEvents events)
@@ -18,8 +22,7 @@ namespace ManagmentSystem
         private void CatchEventFromLogicLayer(IDataContainer dataContainer)
         {
             InitializeComponent(dataContainer);
-            GetLastMetaDataDTO();
-
+            _router.Redirect(dataContainer);
 
         }
     }
