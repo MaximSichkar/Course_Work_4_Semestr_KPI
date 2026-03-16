@@ -34,7 +34,7 @@ namespace Account.VM
         public string? notificationMessage;
 
         /// <summary>
-        /// 
+        /// Preparation for event
         /// </summary>
         public readonly ManagmentSystemEvents _managmentSystemEvents = new ManagmentSystemEvents();
 

@@ -1,7 +1,4 @@
-﻿using Account.CON;
-using Account.DTO;
-using DataTransferObjects;
-using DataTrasferObjectInterfaces;
+﻿using DataTrasferObjectInterfaces;
 
 namespace Account.BL
 {
@@ -41,11 +38,11 @@ namespace Account.BL
         #region private Methods
 
         /// <summary>
-        /// Method which is part of Login trasition (BuisinessLogic) 
+        /// Rises event that sends request to next layer of logic
         /// </summary>
-        private void SendRequestToApplicationNextLayer()
+        private void SendRequestToNextApplicationLayer()
         {
-            LoginTransitionHandler.ProcessRequest(DataContainer);
+            _managmentSystemEvents.RouteRequest(DataContainer);
         }
 
         private void ProcessResponseFromApplicationNextLayer()

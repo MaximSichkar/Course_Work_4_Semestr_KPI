@@ -80,7 +80,7 @@ namespace Account.VM
         }
 
         /// <summary>
-        /// Sends request to next layer of logic
+        /// Rises event that sends request to next layer of logic
         /// </summary>
         private void SendRequestToNextApplicationLayer()
         {

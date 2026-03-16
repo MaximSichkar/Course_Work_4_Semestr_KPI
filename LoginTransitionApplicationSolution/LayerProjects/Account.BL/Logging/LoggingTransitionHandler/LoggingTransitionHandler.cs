@@ -1,9 +1,15 @@
-﻿using DataTrasferObjectInterfaces;
+﻿using ApplicationEvents;
+using DataTrasferObjectInterfaces;
 
 namespace Account.BL
 {
     public partial class LoggingTransitionHandler : ILoggingTransitionHandler
     {
+        /// <summary>
+        /// Preparation for event
+        /// </summary>
+        public readonly ManagmentSystemEvents _managmentSystemEvents = new ManagmentSystemEvents();
+
         #region public Methods
 
         /// <summary>
@@ -22,7 +28,7 @@ namespace Account.BL
         public void ProcessRequest(IDataContainer dataContainer)
         {
             InitializeComponent(dataContainer);
-            SendRequestToApplicationNextLayer();
+            SendRequestToNextApplicationLayer();
             ProcessResponseFromApplicationNextLayer();
         }
 

@@ -1,4 +1,5 @@
-﻿using DataTrasferObjectInterfaces;
+﻿using ApplicationEvents;
+using DataTrasferObjectInterfaces;
 
 namespace Account.DPL
 {
@@ -7,6 +8,11 @@ namespace Account.DPL
     /// </summary>
     public partial class LoggingTransitionHandler : ILoggingTransitionHandler
     {
+        /// <summary>
+        /// Preparation for event
+        /// </summary>
+        public readonly ManagmentSystemEvents _managmentSystemEvents = new ManagmentSystemEvents();
+
         /// <summary>
         /// DI
         /// </summary>

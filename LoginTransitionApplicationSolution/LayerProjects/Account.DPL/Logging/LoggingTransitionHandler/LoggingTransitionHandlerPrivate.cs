@@ -1,6 +1,4 @@
-﻿using Account.DTO;
-using DataTrasferObjectInterfaces;
-using MaSystemResourses;
+﻿using DataTrasferObjectInterfaces;
 
 namespace Account.DPL
 {
@@ -81,11 +79,11 @@ namespace Account.DPL
         }
 
         /// <summary>
-        /// Method which is part of Login trasition go to access logic 
+        /// Rises event that sends request to next layer of logic
         /// </summary>
-        private void ReadAccountDataFromStorage()
+        private void SendRequestToNextApplicationLayer()
         {
-            LoginTransitionHandler.ProcessRequest(DataContainer);
+            _managmentSystemEvents.RouteRequest(DataContainer);
         }
 
         /// <summary>
