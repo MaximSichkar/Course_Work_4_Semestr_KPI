@@ -1,29 +1,32 @@
-﻿using ApplicationEvents;
+﻿using Contracts;
 using DataTrasferObjectInterfaces;
-using Router;
 
 
 namespace ManagmentSystem
 {
     public partial class ApplicationSystem
     {
-        private readonly IApplicationRouter _router;
+        private readonly ApplicationRouter _router;
 
         public ApplicationSystem(ApplicationRouter applicationRouter)
         {
             _router = applicationRouter;
         }
 
-        public ApplicationSystem(ManagmentSystemEvents events)
-        {
-            events.GoToRouter += CatchEventFromLogicLayer;
-        }
-
         private void CatchEventFromLogicLayer(IDataContainer dataContainer)
         {
             InitializeComponent(dataContainer);
-            _router.Redirect(dataContainer);
+            _router.Redirect(dataContainer, this);
 
+        }
+
+        public ITransitionHandler GetTransitionHandler(IDataContainer dataContainer)
+        {
+            InitializeComponent(dataContainer);
+            GetLastMetaDataDTO();
+            MetaDataDTO.LayerName //TODO use metadata to get instance of DI
+            ITransitionHandler transitionHandler =
+            return transitionHandler;
         }
     }
 }

@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Contract\Account.CON.csproj" />
     <ProjectReference Include="..\..\Framework\DataTrasferObjectInterfaces\DataTrasferObjectInterfaces.csproj" />
+    <ProjectReference Include="..\..\LayerProjects\Account.VM\Account.VM.csproj" />
   </ItemGroup>
 
 </Project>

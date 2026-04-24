@@ -9,7 +9,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\ApplicationProjects\ManagmentSystem\ManagmentSystem.csproj" />
     <ProjectReference Include="..\..\Framework\DataTransferObjects\DataTransferObjects.csproj" />
-    <ProjectReference Include="..\Router\Router.csproj" />
   </ItemGroup>
 
 </Project>

@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Contract\Account.CON.csproj" />
-    <ProjectReference Include="..\..\ServiceProjects\Router\Router.csproj" />
+    <ProjectReference Include="..\..\ServiceProjects\Contracts\Contracts.csproj" />
     <ProjectReference Include="..\..\Solution\Events\ApplicationEvents.csproj" />
   </ItemGroup>
 

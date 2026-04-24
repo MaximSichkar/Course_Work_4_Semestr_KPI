@@ -7,8 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Framework\DataTrasferObjectInterfaces\DataTrasferObjectInterfaces.csproj" />
-    <ProjectReference Include="..\..\ServiceProjects\Contracts\Contracts.csproj" />
+    <AdditionalFiles Remove="C:\Users\clash\AppData\Roaming\SonarLint for Visual Studio\.global\csharp\SonarLint.xml" />
   </ItemGroup>
-
 </Project>

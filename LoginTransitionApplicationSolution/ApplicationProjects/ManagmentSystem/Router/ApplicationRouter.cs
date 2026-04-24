@@ -1,17 +1,11 @@
 ﻿using Account.CON;
+using Contracts;
 using DataTrasferObjectInterfaces;
-using ManagmentSystem;
 
-namespace Router
+namespace ManagmentSystem
 {
-    public partial class ApplicationRouter : IApplicationRouter
+    public partial class ApplicationRouter
     {
-        private readonly LoggingTransitionHandler _blHandler;
-
-        public ApplicationRouter(LoggingTransitionHandler blHandler)
-        {
-            _blHandler = blHandler;
-        }
 
         public void Redirect(IDataContainer dataContainer, ApplicationSystem applicationSystem)
         {
@@ -21,19 +15,22 @@ namespace Router
             {
                 case LayerContract.VM:
                     MetaDataDTO.LayerName = LayerContract.BL;
-
-                    Account.VM.ProcessRequest();
                     break;
 
                 case LayerContract.BL:
+                    MetaDataDTO.LayerName = LayerContract.DPL;
                     break;
 
                 case LayerContract.DPL:
+                    MetaDataDTO.LayerName = LayerContract.DAL;
                     break;
 
                 case LayerContract.DAL:
                     break;
             }
+
+            ITransitionHandler transitionHandler = applicationSystem.GetTransitionHandler(dataContainer);
+            transitionHandler.ProcessRequest();
         }
     }
 }

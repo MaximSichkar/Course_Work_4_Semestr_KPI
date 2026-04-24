@@ -1,8 +1,9 @@
-﻿using DataTrasferObjectInterfaces;
+﻿using Contracts;
+using DataTrasferObjectInterfaces;
 
 namespace Account.BL
 {
-    public interface ILoggingTransitionHandler
+    public interface ILoggingTransitionHandler : ITransitionHandler
     {
         void ProcessRequest(IDataContainer container);
     }

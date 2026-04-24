@@ -1,9 +1,9 @@
-﻿namespace Orchestration
+﻿namespace Caching
 {
     public class Cache
     {
         static Cache? _cache;
-        IApplicationCache _applicationCache = new ApplicationCache();
+        readonly IApplicationCache _applicationCache = new ApplicationCache();
 
         public IApplicationCache ApplicationCache
         {
