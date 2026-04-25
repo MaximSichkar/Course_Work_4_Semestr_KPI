@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using DataTrasferObjectInterfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 
 namespace ManagmentSystem
@@ -7,10 +8,12 @@ namespace ManagmentSystem
     public partial class ApplicationSystem
     {
         private readonly ApplicationRouter _router;
+        private readonly IServiceProvider _serviceProvider;
 
-        public ApplicationSystem(ApplicationRouter applicationRouter)
+        public ApplicationSystem(ApplicationRouter applicationRouter, IServiceProvider serviceProvider)
         {
             _router = applicationRouter;
+            _serviceProvider = serviceProvider;
         }
 
         private void CatchEventFromLogicLayer(IDataContainer dataContainer)
@@ -24,8 +27,7 @@ namespace ManagmentSystem
         {
             InitializeComponent(dataContainer);
             GetLastMetaDataDTO();
-            MetaDataDTO.LayerName //TODO use metadata to get instance of DI
-            ITransitionHandler transitionHandler =
+            ITransitionHandler transitionHandler = _serviceProvider.GetRequiredKeyedService<ITransitionHandler>(MetaDataDTO.UseCaseName + MetaDataDTO.LayerName);
             return transitionHandler;
         }
     }

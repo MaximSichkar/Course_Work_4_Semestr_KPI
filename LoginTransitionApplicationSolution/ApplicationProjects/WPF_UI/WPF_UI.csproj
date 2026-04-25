@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Contract\Account.CON.csproj" />
     <ProjectReference Include="..\..\LayerProjects\Account.BL\Account.BL.csproj" />
     <ProjectReference Include="..\..\LayerProjects\Account.DAL\Account.DAL.csproj" />
     <ProjectReference Include="..\..\LayerProjects\Account.DPL\Account.DPL.csproj" />

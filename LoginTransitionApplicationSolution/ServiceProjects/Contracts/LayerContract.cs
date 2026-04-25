@@ -1,4 +1,4 @@
-﻿namespace Account.CON
+﻿namespace Contracts
 {
     public class LayerContract
     {

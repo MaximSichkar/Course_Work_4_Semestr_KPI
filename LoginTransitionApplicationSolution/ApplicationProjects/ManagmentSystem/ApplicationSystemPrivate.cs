@@ -26,6 +26,11 @@ namespace ManagmentSystem
             DataContainer = dataContainer;
         }
 
+        private void GetLastMetaDataDTO()
+        {
+            MetaDataDTO = DataContainer.GetLastDTO<IMetaDataDTO>(TableTypes.META_DATA)!;
+        }
+
         #endregion
 
     }

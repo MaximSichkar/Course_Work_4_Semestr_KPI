@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.15" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Contract\Account.CON.csproj" />
     <ProjectReference Include="..\..\ServiceProjects\Contracts\Contracts.csproj" />
     <ProjectReference Include="..\..\Solution\Events\ApplicationEvents.csproj" />

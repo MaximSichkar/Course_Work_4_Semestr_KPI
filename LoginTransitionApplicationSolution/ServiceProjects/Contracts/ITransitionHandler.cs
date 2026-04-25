@@ -1,4 +1,6 @@
-﻿namespace Contracts
+﻿using DataTrasferObjectInterfaces;
+
+namespace Contracts
 {
     public interface ITransitionHandler
     {

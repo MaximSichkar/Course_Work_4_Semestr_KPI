@@ -26,11 +26,11 @@ namespace WPF_UI
 
             #region Login Transition DI registration
 
-            services.AddScoped<LoginWindow>();
+            services.AddScoped<MainWindow>();
             services.AddScoped<LoginViewModel>();
-            services.AddKeyedScoped<ITransitionHandler, Account.BL.LoggingTransitionHandler>("BL");
-            services.AddKeyedScoped<ITransitionHandler, Account.DPL.LoggingTransitionHandler>("DPL");
-            services.AddKeyedScoped<ITransitionHandler, Account.DAL.LoggingTransitionHandler>("DAL");
+            services.AddKeyedScoped<ITransitionHandler, Account.BL.LoggingTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.BL);
+            services.AddKeyedScoped<ITransitionHandler, Account.DPL.LoggingTransitionHandler>("DataProcessingLayer");
+            services.AddKeyedScoped<ITransitionHandler, Account.DAL.LoggingTransitionHandler>("DataAccesssLayer");
             services.AddDbContext<AccountDbContext>(options => options.UseSqlServer(
                 "Server=192.168.50.10\\SQLEXPRESS;" +
                 "Database=MaSystem;" +
@@ -40,6 +40,12 @@ namespace WPF_UI
                 "Connection Timeout=10"));
 
             #endregion
+
+            _serviceProvider = services.BuildServiceProvider();
+
+            //Startup
+            var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
+            mainWindow.Show();
         }
 
     }
