@@ -34,6 +34,6 @@
         /// </summary>
         /// <typeparam name="T">Type of DTO</typeparam>
         /// <param name="key">Key wich points on right DTO</param>
-        void DeleteDTOLast<T>(string key);
+        void DeleteLastDTO<T>(string key);
     }
 }
