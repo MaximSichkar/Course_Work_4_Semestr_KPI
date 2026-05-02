@@ -1,13 +1,6 @@
-﻿using System.Text;
+﻿using Contracts;
+using ManagmentSystem;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WPF_UI
 {
@@ -19,6 +12,10 @@ namespace WPF_UI
         public MainWindow()
         {
             InitializeComponent();
+
+            ApplicationSystem applicationSystem = ApplicationSystem.GetInstance();
+            IStateHandler stateHandler = applicationSystem.GetStateHandler(Account.CON.UseCaseContract.ACCOUNT, LayerContract.SL);
+            applicationSystem.SubscribeToEvent(stateHandler);
         }
     }
 }

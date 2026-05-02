@@ -1,6 +1,6 @@
-﻿using ApplicationEvents;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Contracts;
 using System.Windows.Input;
 
 namespace Account.VM
@@ -8,23 +8,8 @@ namespace Account.VM
     /// <summary>
     /// Login View Model, (UI file)
     /// </summary>
-    public partial class LoginViewModel : ObservableObject
+    public partial class LoginViewModel : StateHandler
     {
-        #region Constructors
-
-        /// <summary>
-        /// DI
-        /// </summary>
-        /// <param name="loggingTransitionHandler"></param>
-        public LoginViewModel(Account.BL.ILoggingTransitionHandler loggingTransitionHandler)
-        {
-            WindowLoadedCommand = new RelayCommand(OnWindowLoaded);
-            AccountModel = new AccountModel();
-            LoggingTransitionHandler = loggingTransitionHandler;
-        }
-
-        #endregion
-
         #region Data Fields        
 
         /// <summary>
@@ -32,11 +17,6 @@ namespace Account.VM
         /// </summary>
         [ObservableProperty]
         public string? notificationMessage;
-
-        /// <summary>
-        /// Preparation for event
-        /// </summary>
-        public readonly ManagmentSystemEvents _managmentSystemEvents = new ManagmentSystemEvents();
 
         /// <summary>
         /// Command for window loading

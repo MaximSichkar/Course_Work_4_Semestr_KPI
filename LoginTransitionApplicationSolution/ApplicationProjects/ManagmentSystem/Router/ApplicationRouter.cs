@@ -12,7 +12,7 @@ namespace ManagmentSystem
 
             switch (MetaDataDTO.LayerName)
             {
-                case LayerContract.VM:
+                case LayerContract.SL:
                     MetaDataDTO.LayerName = LayerContract.BL;
                     break;
 
@@ -29,7 +29,10 @@ namespace ManagmentSystem
             }
 
             ITransitionHandler transitionHandler = applicationSystem.GetTransitionHandler(dataContainer);
+
+            applicationSystem.SubscribeToEvent(transitionHandler);
             transitionHandler.ProcessRequest();
+            applicationSystem.UnSubscribeToEvent(transitionHandler);
         }
     }
 }

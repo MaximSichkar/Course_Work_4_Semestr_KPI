@@ -1,4 +1,5 @@
-﻿using DataTrasferObjectInterfaces;
+﻿using Contracts;
+using DataTrasferObjectInterfaces;
 
 
 namespace ManagmentSystem
@@ -21,9 +22,14 @@ namespace ManagmentSystem
 
         #region Methods
 
-        private void InitializeComponent(IDataContainer dataContainer)
+        private void InitializeComponent(ServiceRequestEventArgs serviceRequestEventArgs)
         {
-            DataContainer = dataContainer;
+            DataContainer = serviceRequestEventArgs.DataContainer;
+        }
+
+        private void InitializeComponent(IDataContainer datatContainer)
+        {
+            DataContainer = datatContainer;
         }
 
         private void GetLastMetaDataDTO()
@@ -32,6 +38,5 @@ namespace ManagmentSystem
         }
 
         #endregion
-
     }
 }

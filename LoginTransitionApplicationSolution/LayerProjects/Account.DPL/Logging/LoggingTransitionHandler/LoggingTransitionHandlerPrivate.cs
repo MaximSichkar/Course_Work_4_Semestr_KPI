@@ -1,4 +1,5 @@
-﻿using DataTrasferObjectInterfaces;
+﻿using Account.DTO;
+using DataTrasferObjectInterfaces;
 
 namespace Account.DPL
 {
@@ -8,11 +9,6 @@ namespace Account.DPL
     public partial class LoggingTransitionHandler
     {
         #region Private properties
-
-        private Account.DAL.ILoggingTransitionHandler LoginTransitionHandler
-        {
-            get; set;
-        }
 
         /// <summary>
         /// Property which contains user data validation result
@@ -46,18 +42,9 @@ namespace Account.DPL
         #region Private methods
 
         /// <summary>
-        /// Method wich initializing components
-        /// </summary>
-        /// <param name="dataContainer"></param>
-        private void InitializeComponent(IDataContainer dataContainer)
-        {
-            DataContainer = dataContainer;
-        }
-
-        /// <summary>
         /// Processes the account data obtained from storage and sets the login result
         /// </summary>
-        private void ProcessAccountData()
+        /* private void ProcessAccountData()
         {
             if (AccountDTO == null)
             {
@@ -76,14 +63,14 @@ namespace Account.DPL
                 SearchAccountDTO.LoginProcessingResult = CoreComponents.LoginProcessingResult.AccountFoundPasswordMissmatched;
                 DataContainer.AddDTOToDataContainer<MessageDTO>(MessageDTO.Create(Resources.LoginIsFailed, MessageTypes.Error), TableTypes.MESSAGE);
             }
-        }
+        }*/
 
         /// <summary>
         /// Rises event that sends request to next layer of logic
         /// </summary>
         private void SendRequestToNextApplicationLayer()
         {
-            _managmentSystemEvents.RouteRequest(DataContainer);
+            RaiseServiceRequest(DataContainer);
         }
 
         /// <summary>
@@ -108,7 +95,7 @@ namespace Account.DPL
         /// </summary>
         private void GetSearchRequestFromContainer()
         {
-            SearchAccountDTO = DataContainer.GetDTO<SearchAccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_REQUEST_SUFFIX)!;
+            SearchAccountDTO = DataContainer.GetLastDTO<SearchAccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_REQUEST_SUFFIX)!;
         }
 
         /// <summary>
@@ -116,7 +103,7 @@ namespace Account.DPL
         /// </summary>
         private void GetSearchResultFromContainer()
         {
-            AccountDTO = DataContainer.GetDTO<AccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_RESULT_SUFFIX)!;
+            AccountDTO = DataContainer.GetLastDTO<AccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_RESULT_SUFFIX)!;
         }
 
         #endregion

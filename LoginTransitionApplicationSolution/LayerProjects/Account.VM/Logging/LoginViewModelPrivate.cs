@@ -2,16 +2,16 @@
 using Account.DTO;
 using Account.MOD;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Contracts;
 using DataTransferObjects;
 using DataTrasferObjectInterfaces;
-using Orchestration;
 
 namespace Account.VM
 {
     /// <summary>
     /// Login View Model, (UI file)
     /// </summary>
-    public partial class LoginViewModel : ObservableObject
+    public partial class LoginViewModel
     {
         #region Private Data Fields
 
@@ -37,6 +37,8 @@ namespace Account.VM
             get; set;
         }
 
+
+
         /// <summary>
         /// Property which implies result of login transition
         /// </summary>
@@ -54,6 +56,11 @@ namespace Account.VM
         }
 
         private AccountDTO? AccountDTO
+        {
+            get; set;
+        }
+
+        SearchAccountDTO SearchAccountDTO
         {
             get; set;
         }
@@ -76,7 +83,7 @@ namespace Account.VM
         /// </summary>
         private void AddSearchAccountDTOToDataContainer()
         {
-            DataContainer.AddDTOToDataContainer(AccountModel.SearchAccountDTO!, TableTypes.ACCOUNT + TableTypes.SEARCH_REQUEST_SUFFIX);
+            DataContainer.AddDTOToDataContainer(SearchAccountDTO!, TableTypes.ACCOUNT + TableTypes.SEARCH_REQUEST_SUFFIX);
         }
 
         /// <summary>
@@ -84,7 +91,7 @@ namespace Account.VM
         /// </summary>
         private void SendRequestToNextApplicationLayer()
         {
-            _managmentSystemEvents.RouteRequest(DataContainer);
+            RaiseServiceRequest(DataContainer);
         }
 
         /// <summary>
@@ -92,7 +99,7 @@ namespace Account.VM
         /// </summary>
         private void AddMetaDataToDataContainer()
         {
-            DataContainer.AddDTOToDataContainer(MetaDataDTO.Create(UseCaseContract.ACCOUNT, TransitionContract.LOGGING, StateContract.LOGIN, LayerContract.VM), TableTypes.META_DATA);
+            DataContainer.AddDTOToDataContainer(MetaDataDTO.Create(UseCaseContract.ACCOUNT, TransitionContract.LOGGING, StateContract.LOGIN, LayerContract.SL), TableTypes.META_DATA);
         }
 
         /// <summary>

@@ -20,6 +20,7 @@
     <ProjectReference Include="..\..\LayerProjects\Account.DPL\Account.DPL.csproj" />
     <ProjectReference Include="..\..\LayerProjects\Account.VM\Account.VM.csproj" />
     <ProjectReference Include="..\..\ServiceProjects\Contracts\Contracts.csproj" />
+    <ProjectReference Include="..\ManagmentSystem\ManagmentSystem.csproj" />
   </ItemGroup>
 
 </Project>

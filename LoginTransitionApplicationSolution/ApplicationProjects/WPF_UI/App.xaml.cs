@@ -27,10 +27,10 @@ namespace WPF_UI
             #region Login Transition DI registration
 
             services.AddScoped<MainWindow>();
-            services.AddScoped<LoginViewModel>();
+            services.AddKeyedScoped<IStateHandler, LoginViewModel>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.SL);
             services.AddKeyedScoped<ITransitionHandler, Account.BL.LoggingTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.BL);
-            services.AddKeyedScoped<ITransitionHandler, Account.DPL.LoggingTransitionHandler>("DataProcessingLayer");
-            services.AddKeyedScoped<ITransitionHandler, Account.DAL.LoggingTransitionHandler>("DataAccesssLayer");
+            services.AddKeyedScoped<ITransitionHandler, Account.DPL.LoggingTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.DPL);
+            services.AddKeyedScoped<ITransitionHandler, Account.DAL.LoggingTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.DAL);
             services.AddDbContext<AccountDbContext>(options => options.UseSqlServer(
                 "Server=192.168.50.10\\SQLEXPRESS;" +
                 "Database=MaSystem;" +

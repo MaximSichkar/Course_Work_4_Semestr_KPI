@@ -1,4 +1,5 @@
-﻿using ApplicationEvents;
+﻿
+using Contracts;
 using DataTrasferObjectInterfaces;
 
 namespace Account.DPL
@@ -6,22 +7,8 @@ namespace Account.DPL
     /// <summary>
     /// Class which is part of Login trasition (DataProccesingLogic) 
     /// </summary>
-    public partial class LoggingTransitionHandler : ILoggingTransitionHandler
+    public partial class LoggingTransitionHandler : TransitionHandler
     {
-        /// <summary>
-        /// Preparation for event
-        /// </summary>
-        public readonly ManagmentSystemEvents _managmentSystemEvents = new ManagmentSystemEvents();
-
-        /// <summary>
-        /// DI
-        /// </summary>
-        /// <param name="loggingTransitionHandler"></param>
-        public LoggingTransitionHandler(Account.DAL.ILoggingTransitionHandler loggingTransitionHandler)
-        {
-            LoginTransitionHandler = loggingTransitionHandler;
-        }
-
         /// <summary>
         /// Method which is part of Login trasition (DataProccesingLogic) 
         /// </summary>
@@ -33,7 +20,7 @@ namespace Account.DPL
             ValidateInputData();
             if (InputDataValid)
             {
-                ReadAccountDataFromStorage();
+                //ReadAccountDataFromStorage();
                 GetSearchRequestFromContainer();
                 GetSearchResultFromContainer();
                 ProcessAccountData();

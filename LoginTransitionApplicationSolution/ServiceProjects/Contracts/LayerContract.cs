@@ -2,7 +2,7 @@
 {
     public class LayerContract
     {
-        public const string VM = "ViewModel";
+        public const string SL = "StateLayer";
         public const string BL = "BuisnessLayer";
         public const string DPL = "DataProcessingLayer";
         public const string DAL = "DataAccesssLayer";

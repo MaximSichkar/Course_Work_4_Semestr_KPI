@@ -1,19 +1,10 @@
-﻿using Account.DbContext;
-using Account.DTO;
+﻿using Contracts;
 using DataTrasferObjectInterfaces;
 
 namespace Account.DAL
 {
-    public partial class LoggingTransitionHandler : ILoggingTransitionHandler
+    public partial class LoggingTransitionHandler : TransitionHandler
     {
-        public List<AccountDTO> accounts = new List<AccountDTO>();
-
-        private readonly AccountDbContext _dbContext;
-
-        public LoggingTransitionHandler(AccountDbContext dbContext)
-        {
-            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
-        }
 
         /// <summary>
         /// Method which is part of Login trasition (DataAccessLogic) 

@@ -7,28 +7,79 @@ namespace ManagmentSystem
 {
     public partial class ApplicationSystem
     {
-        private readonly ApplicationRouter _router;
-        private readonly IServiceProvider _serviceProvider;
+        static ApplicationSystem? _applicationSystem = null;
 
-        public ApplicationSystem(ApplicationRouter applicationRouter, IServiceProvider serviceProvider)
+        private ApplicationSystem()
         {
-            _router = applicationRouter;
-            _serviceProvider = serviceProvider;
+
         }
 
-        private void CatchEventFromLogicLayer(IDataContainer dataContainer)
+        public IServiceProvider ServiceProvider
         {
-            InitializeComponent(dataContainer);
-            _router.Redirect(dataContainer, this);
+            get; set;
+        }
 
+        public ApplicationRouter ApplicationRouter
+        {
+            get; set;
+        }
+
+        public static ApplicationSystem GetInstance()
+        {
+            if (_applicationSystem == null)
+            {
+                _applicationSystem = new ApplicationSystem();
+            }
+
+            return _applicationSystem;
+        }
+
+        /// <summary>
+        /// Catch event method
+        /// </summary>
+        /// <param name="dataContainer"></param>
+        private void OnServiceRequest(object? sender, ServiceRequestEventArgs e)
+        {
+            InitializeComponent(e);
+            ApplicationRouter.Redirect(DataContainer, this);
         }
 
         public ITransitionHandler GetTransitionHandler(IDataContainer dataContainer)
         {
             InitializeComponent(dataContainer);
             GetLastMetaDataDTO();
-            ITransitionHandler transitionHandler = _serviceProvider.GetRequiredKeyedService<ITransitionHandler>(MetaDataDTO.UseCaseName + MetaDataDTO.LayerName);
+            ITransitionHandler transitionHandler = ServiceProvider.GetRequiredKeyedService<ITransitionHandler>(MetaDataDTO.UseCaseName + MetaDataDTO.LayerName);
             return transitionHandler;
         }
+
+        public IStateHandler GetStateHandler(string useCaseName, string layerName)
+        {
+            IStateHandler stateHandler = ServiceProvider.GetRequiredKeyedService<IStateHandler>(useCaseName + layerName);
+            return stateHandler;
+        }
+
+        #region Event Subscription
+
+        public void SubscribeToEvent(ITransitionHandler transitionHandler)
+        {
+            transitionHandler.ServiceRequest += OnServiceRequest;
+        }
+
+        public void SubscribeToEvent(IStateHandler stateHandler)
+        {
+            stateHandler.ServiceRequest += OnServiceRequest;
+        }
+
+        public void UnSubscribeToEvent(ITransitionHandler transitionHandler)
+        {
+            transitionHandler.ServiceRequest -= OnServiceRequest;
+        }
+
+        public void UnSubscribeToEvent(IStateHandler stateHandler)
+        {
+            stateHandler.ServiceRequest -= OnServiceRequest;
+        }
+
+        #endregion
     }
 }
