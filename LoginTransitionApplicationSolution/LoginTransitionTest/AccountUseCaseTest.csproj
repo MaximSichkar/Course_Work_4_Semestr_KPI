@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<IsTestProject>true</IsTestProject>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+		<PackageReference Include="MSTest" Version="3.6.4" />
+		<PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" Version="17.12.6" />
+		<PackageReference Include="Microsoft.Testing.Extensions.TrxReport" Version="1.4.3" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.15" />
+		<Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\ApplicationProjects\ManagmentSystem\ManagmentSystem.csproj" />
+		<ProjectReference Include="..\Data\Account.DTO\Account.DTO.csproj" />
+		<ProjectReference Include="..\DbContext\Account.DbContext.csproj" />
+		<ProjectReference Include="..\LayerProjects\Account.BL\Account.BL.csproj" />
+		<ProjectReference Include="..\LayerProjects\Account.DAL\Account.DAL.csproj" />
+		<ProjectReference Include="..\LayerProjects\Account.DPL\Account.DPL.csproj" />
+		<ProjectReference Include="..\LayerProjects\Account.VM\Account.VM.csproj" />
+		<ProjectReference Include="..\Models\Account.MOD\Account.MOD.csproj" />
+		<ProjectReference Include="..\ServiceProjects\Builder\Builder.csproj" />
+		<ProjectReference Include="..\ServiceProjects\Contracts\Contracts.csproj" />
+	</ItemGroup>
+
+</Project>

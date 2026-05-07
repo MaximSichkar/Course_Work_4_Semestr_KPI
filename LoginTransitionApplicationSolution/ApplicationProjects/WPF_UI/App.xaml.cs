@@ -1,7 +1,6 @@
-﻿using Account.VM;
-using Contracts;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
+using WPFSystemAplication;
 
 namespace WPF_UI
 {
@@ -26,25 +25,12 @@ namespace WPF_UI
 
             #region Login Transition DI registration
 
-            services.AddScoped<MainWindow>();
-            services.AddKeyedScoped<IStateHandler, LoginViewModel>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.SL);
-            services.AddKeyedScoped<ITransitionHandler, Account.BL.LoggingTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.BL);
-            services.AddKeyedScoped<ITransitionHandler, Account.DPL.LoggingTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.DPL);
-            services.AddKeyedScoped<ITransitionHandler, Account.DAL.LoggingTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.DAL);
-            services.AddDbContext<AccountDbContext>(options => options.UseSqlServer(
-                "Server=192.168.50.10\\SQLEXPRESS;" +
-                "Database=MaSystem;" +
-                "User Id=Maxim;" +
-                "Password=root;" +
-                "Encrypt=Optional;" +
-                "Connection Timeout=10"));
+            services.AddScoped<LoginWindow>();
 
             #endregion
 
-            _serviceProvider = services.BuildServiceProvider();
-
             //Startup
-            var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
+            var mainWindow = _serviceProvider.GetRequiredService<LoginWindow>();
             mainWindow.Show();
         }
 

@@ -15,8 +15,8 @@
     <ProjectReference Include="..\..\Data\Account.DTO\Account.DTO.csproj" />
     <ProjectReference Include="..\..\Framework\DataTransferObjects\DataTransferObjects.csproj" />
     <ProjectReference Include="..\..\Models\Account.MOD\Account.MOD.csproj" />
+    <ProjectReference Include="..\..\ServiceProjects\BusinessProcessHandlers\BusinessProcessHandlers.csproj" />
     <ProjectReference Include="..\..\ServiceProjects\Cache\Caching.csproj" />
-    <ProjectReference Include="..\..\ServiceProjects\Contracts\Contracts.csproj" />
   </ItemGroup>
 
 </Project>

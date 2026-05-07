@@ -1,4 +1,6 @@
-﻿using Account.DTO;
+﻿using Account.CON;
+using Account.DTO;
+using Contracts;
 using DataTrasferObjectInterfaces;
 
 namespace Account.BL
@@ -6,11 +8,6 @@ namespace Account.BL
     public partial class LoggingTransitionHandler
     {
         #region private Properties
-
-        private IDataContainer DataContainer
-        {
-            get; set;
-        } = default!;
 
         /// <summary>
         /// DTO that contains information for account lookup
@@ -30,13 +27,16 @@ namespace Account.BL
         /// </summary>
         private void SendRequestToNextApplicationLayer()
         {
+            CreateMetaData(UseCaseContract.ACCOUNT, TransitionContract.LOGGING, StateContract.LOGIN, LayerContract.BL);
+            AddMetaData();
             RaiseServiceRequest(DataContainer);
+            DeleteLastMetaData();
         }
 
-        /* private void ProcessResponseFromApplicationNextLayer()
+        private void ProcessResponseFromApplicationNextLayer()
         {
             GetSearchRequestFromContainer();
-            GetMetaDataFromContainer();
+            GetMetaDataDTO();
 
             switch (SearchAccountDTO.LoginProcessingResult)
             {
@@ -50,7 +50,12 @@ namespace Account.BL
                     MetaDataDTO.StateName = StateContract.INITIAL;
                     break;
             }
-        } */
+        }
+
+        private void GetMetaDataDTO()
+        {
+            MetaDataDTO = DataContainer.GetMetaDataByLayer(LayerContract.SL)!;
+        }
 
         /// <summary>
         /// Method which gets serch request from container

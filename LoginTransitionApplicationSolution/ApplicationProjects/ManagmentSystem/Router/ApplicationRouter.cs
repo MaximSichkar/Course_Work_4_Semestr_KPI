@@ -8,6 +8,7 @@ namespace ManagmentSystem
 
         public void Redirect(IDataContainer dataContainer, ApplicationSystem applicationSystem)
         {
+            InitializeComponent(dataContainer);
             GetLastMetaDataDTO();
 
             switch (MetaDataDTO.LayerName)
@@ -31,7 +32,7 @@ namespace ManagmentSystem
             ITransitionHandler transitionHandler = applicationSystem.GetTransitionHandler(dataContainer);
 
             applicationSystem.SubscribeToEvent(transitionHandler);
-            transitionHandler.ProcessRequest();
+            transitionHandler.ProcessRequest(DataContainer);
             applicationSystem.UnSubscribeToEvent(transitionHandler);
         }
     }

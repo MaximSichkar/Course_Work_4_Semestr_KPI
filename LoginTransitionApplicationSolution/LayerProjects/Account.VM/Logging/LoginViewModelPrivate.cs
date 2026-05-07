@@ -1,6 +1,7 @@
 ﻿using Account.CON;
 using Account.DTO;
 using Account.MOD;
+using Caching;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Contracts;
 using DataTransferObjects;
@@ -37,8 +38,6 @@ namespace Account.VM
             get; set;
         }
 
-
-
         /// <summary>
         /// Property which implies result of login transition
         /// </summary>
@@ -60,7 +59,7 @@ namespace Account.VM
             get; set;
         }
 
-        SearchAccountDTO SearchAccountDTO
+        SearchAccountDTO? SearchAccountDTO
         {
             get; set;
         }
@@ -83,6 +82,12 @@ namespace Account.VM
         /// </summary>
         private void AddSearchAccountDTOToDataContainer()
         {
+            SearchAccountDTO = new SearchAccountDTO()
+            {
+                Email = AccountModel.Email,
+                Password = AccountModel.Password
+            };
+
             DataContainer.AddDTOToDataContainer(SearchAccountDTO!, TableTypes.ACCOUNT + TableTypes.SEARCH_REQUEST_SUFFIX);
         }
 
@@ -91,7 +96,9 @@ namespace Account.VM
         /// </summary>
         private void SendRequestToNextApplicationLayer()
         {
+            AddMetaDataToDataContainer();
             RaiseServiceRequest(DataContainer);
+            DeleteLastMetaData();
         }
 
         /// <summary>
@@ -99,7 +106,13 @@ namespace Account.VM
         /// </summary>
         private void AddMetaDataToDataContainer()
         {
-            DataContainer.AddDTOToDataContainer(MetaDataDTO.Create(UseCaseContract.ACCOUNT, TransitionContract.LOGGING, StateContract.LOGIN, LayerContract.SL), TableTypes.META_DATA);
+            IMetaDataDTO metaDataDTO = MetaDataDTO.Create(UseCaseContract.ACCOUNT, TransitionContract.LOGGING, StateContract.LOGIN, LayerContract.SL);
+            DataContainer.AddDTOToDataContainer<IMetaDataDTO>(metaDataDTO, TableTypes.META_DATA);
+        }
+
+        private void DeleteLastMetaData()
+        {
+            DataContainer.DeleteLastDTO<IMetaDataDTO>(TableTypes.META_DATA);
         }
 
         /// <summary>
@@ -117,7 +130,7 @@ namespace Account.VM
         {
             LoginSuccessful = false;
 
-            MetaDataDTO metaDataDTO = DataContainer.GetFirstDTO<MetaDataDTO>(TableTypes.META_DATA)!;
+            IMetaDataDTO metaDataDTO = DataContainer.GetFirstDTO<IMetaDataDTO>(TableTypes.META_DATA)!;
             if (metaDataDTO.StateName == StateContract.INITIAL)
             {
                 LoginSuccessful = true;

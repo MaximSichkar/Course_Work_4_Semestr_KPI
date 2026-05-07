@@ -1,23 +1,24 @@
-﻿using Account.DTO;
+﻿using Account.DbContext;
+using Account.DTO;
+using Contracts;
 using DataTrasferObjectInterfaces;
 
 namespace Account.DAL
 {
-    public partial class LoggingTransitionHandler
+    public partial class LoggingTransitionHandler : ITransitionHandler
     {
         #region Private properties
 
-        /// <summary>
-        /// DataContainer property implementation 
-        /// </summary>
-        private DataTrasferObjectInterfaces.IDataContainer DataContainer
-        {
-            get; set;
-        } = default!;
-
         private AccountDTO? FoundAccount;
 
+        private readonly AccountDbContext _dbContext;
+
         #endregion
+
+        public LoggingTransitionHandler(AccountDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
         #region Private methods
 
@@ -28,7 +29,7 @@ namespace Account.DAL
         {
             SearchAccountDTO searchAccountDTO = DataContainer.GetLastDTO<SearchAccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_REQUEST_SUFFIX)!;
 
-            //FoundAccount = _dbContext.Account.FirstOrDefault(account => account.Email == searchAccountDTO.Email);
+            FoundAccount = _dbContext.Account.FirstOrDefault(account => account.Email == searchAccountDTO.Email);
         }
 
         private void AddAccountDTOToDataContainer()

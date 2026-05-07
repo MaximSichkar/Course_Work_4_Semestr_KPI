@@ -10,14 +10,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.15" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.15" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Contract\Account.CON.csproj" />
-    <ProjectReference Include="..\..\LayerProjects\Account.BL\Account.BL.csproj" />
-    <ProjectReference Include="..\..\LayerProjects\Account.DAL\Account.DAL.csproj" />
-    <ProjectReference Include="..\..\LayerProjects\Account.DPL\Account.DPL.csproj" />
     <ProjectReference Include="..\..\LayerProjects\Account.VM\Account.VM.csproj" />
     <ProjectReference Include="..\..\ServiceProjects\Contracts\Contracts.csproj" />
     <ProjectReference Include="..\ManagmentSystem\ManagmentSystem.csproj" />

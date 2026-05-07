@@ -1,4 +1,4 @@
-﻿using Contracts;
+﻿using BusinessProcessHandlers;
 using DataTrasferObjectInterfaces;
 
 namespace Account.DAL
@@ -10,7 +10,7 @@ namespace Account.DAL
         /// Method which is part of Login trasition (DataAccessLogic) 
         /// </summary>
         /// <param name="dataContainer"></param>
-        public void ProcessRequest(IDataContainer dataContainer)
+        public override void ProcessRequest(IDataContainer dataContainer)
         {
             InitializeComponent(dataContainer);
             SearchAccountInDataBase();

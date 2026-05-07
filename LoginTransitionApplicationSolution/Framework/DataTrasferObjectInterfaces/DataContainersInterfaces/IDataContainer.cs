@@ -29,6 +29,8 @@
 
         T? GetLastDTO<T>(string key);
 
+        IMetaDataDTO? GetMetaDataByLayer(string layerName);
+
         /// <summary>
         /// Method for deleting the last DTO in DataCollection
         /// </summary>

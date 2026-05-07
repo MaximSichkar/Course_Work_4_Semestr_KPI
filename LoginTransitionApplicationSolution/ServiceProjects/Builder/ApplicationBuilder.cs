@@ -1,14 +1,17 @@
 ﻿using ManagmentSystem;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Builder
 {
-    public class ApplicationBuilder
+    public partial class ApplicationBuilder
     {
         readonly IServiceProvider _serviceProvider;
 
-        public ApplicationBuilder(IServiceProvider serviceProvider)
+        public ApplicationBuilder(ServiceCollection services)
         {
-            _serviceProvider = serviceProvider;
+            RegisterDependency(services);
+
+            _serviceProvider = services.BuildServiceProvider();
         }
         public ApplicationSystem Build()
         {

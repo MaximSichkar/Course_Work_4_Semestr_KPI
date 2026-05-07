@@ -8,8 +8,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\Account.DTO\Account.DTO.csproj" />
+    <ProjectReference Include="..\..\DbContext\Account.DbContext.csproj" />
     <ProjectReference Include="..\..\Framework\DataTrasferObjectInterfaces\DataTrasferObjectInterfaces.csproj" />
-    <ProjectReference Include="..\..\ServiceProjects\Contracts\Contracts.csproj" />
+    <ProjectReference Include="..\..\ServiceProjects\BusinessProcessHandlers\BusinessProcessHandlers.csproj" />
   </ItemGroup>
 
 </Project>

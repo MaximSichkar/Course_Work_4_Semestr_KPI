@@ -1,4 +1,4 @@
-﻿using Contracts;
+﻿using BusinessProcessHandlers;
 using DataTrasferObjectInterfaces;
 
 namespace Account.BL
@@ -15,7 +15,7 @@ namespace Account.BL
         {
             InitializeComponent(dataContainer);
             SendRequestToNextApplicationLayer();
-            //ProcessResponseFromApplicationNextLayer();
+            ProcessResponseFromApplicationNextLayer();
         }
 
         #endregion

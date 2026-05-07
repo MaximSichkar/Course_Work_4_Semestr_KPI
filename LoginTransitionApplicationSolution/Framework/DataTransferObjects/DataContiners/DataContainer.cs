@@ -109,9 +109,23 @@ namespace DataTrasferObjectInterfaces
                 return default;
             }
 
-            T dto = dataCollection[Count - 1];
+            T dto = dataCollection[dataCollection.Count - 1];
 
             return dto;
+        }
+
+        public IMetaDataDTO? GetMetaDataByLayer(string layerName)
+        {
+            IDataCollection<IMetaDataDTO>? dataCollection =
+                GetDataCollection<IMetaDataDTO>(TableTypes.META_DATA);
+
+            if (dataCollection == null)
+            {
+                return default;
+            }
+
+            return dataCollection
+                .LastOrDefault(metaData => metaData.LayerName == layerName);
         }
 
         /// <summary>

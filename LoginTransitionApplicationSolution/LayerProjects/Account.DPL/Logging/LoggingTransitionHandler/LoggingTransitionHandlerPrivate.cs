@@ -1,5 +1,8 @@
-﻿using Account.DTO;
+﻿using Account.CON;
+using Account.DTO;
+using Contracts;
 using DataTrasferObjectInterfaces;
+using SystemResourses;
 
 namespace Account.DPL
 {
@@ -17,14 +20,6 @@ namespace Account.DPL
         {
             get; set;
         }
-
-        /// <summary>
-        /// DataContainer property implementation 
-        /// </summary>
-        private DataTrasferObjectInterfaces.IDataContainer DataContainer
-        {
-            get; set;
-        } = default!;
 
         private SearchAccountDTO SearchAccountDTO
         {
@@ -44,7 +39,7 @@ namespace Account.DPL
         /// <summary>
         /// Processes the account data obtained from storage and sets the login result
         /// </summary>
-        /* private void ProcessAccountData()
+        private void ProcessAccountData()
         {
             if (AccountDTO == null)
             {
@@ -63,14 +58,17 @@ namespace Account.DPL
                 SearchAccountDTO.LoginProcessingResult = CoreComponents.LoginProcessingResult.AccountFoundPasswordMissmatched;
                 DataContainer.AddDTOToDataContainer<MessageDTO>(MessageDTO.Create(Resources.LoginIsFailed, MessageTypes.Error), TableTypes.MESSAGE);
             }
-        }*/
+        }
 
         /// <summary>
         /// Rises event that sends request to next layer of logic
         /// </summary>
         private void SendRequestToNextApplicationLayer()
         {
+            CreateMetaData(UseCaseContract.ACCOUNT, TransitionContract.LOGGING, StateContract.LOGIN, LayerContract.DPL);
+            AddMetaData();
             RaiseServiceRequest(DataContainer);
+            DeleteLastMetaData();
         }
 
         /// <summary>

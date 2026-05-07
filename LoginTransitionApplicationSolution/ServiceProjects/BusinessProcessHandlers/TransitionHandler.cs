@@ -1,18 +1,18 @@
-﻿using DataTrasferObjectInterfaces;
+﻿using Contracts;
+using DataTrasferObjectInterfaces;
 
-namespace Contracts
+namespace BusinessProcessHandlers
 {
     public class TransitionHandler : ITransitionHandler
     {
         public event EventHandler<ServiceRequestEventArgs>? ServiceRequest;
 
-
-        private IMetaDataDTO MetaDataDTO
+        protected IDataContainer DataContainer
         {
             get; set;
         } = default!;
 
-        private IDataContainer DataContainer
+        protected IMetaDataDTO MetaDataDTO
         {
             get; set;
         } = default!;
@@ -38,21 +38,26 @@ namespace Contracts
 
         #endregion
 
-        public void InitializeComponent(IDataContainer dataContainer)
+        protected void InitializeComponent(IDataContainer dataContainer)
         {
             DataContainer = dataContainer;
         }
 
         #region Meta Data manipulation
 
-        public void AddMetaData(IMetaDataDTO MetaDataDTO, string key)
+        protected void CreateMetaData(string useCaseName, string transitionName, string stateName, string layerName)
         {
-            DataContainer.AddDTOToDataContainer(MetaDataDTO, key);
+            MetaDataDTO = DataTransferObjects.MetaDataDTO.Create(useCaseName, transitionName, stateName, layerName);
         }
 
-        public void DeleteLastMetaData(string key)
+        protected void AddMetaData()
         {
-            DataContainer.DeleteLastDTO<IMetaDataDTO>(key);
+            DataContainer.AddDTOToDataContainer(MetaDataDTO, TableTypes.META_DATA);
+        }
+
+        protected void DeleteLastMetaData()
+        {
+            DataContainer.DeleteLastDTO<IMetaDataDTO>(TableTypes.META_DATA);
         }
 
         #endregion

@@ -37,15 +37,15 @@ namespace DataTransferObjects
         /// <param name="stateName">Name of state</param>
         /// <param name="layerName">Name of the next layer</param>
         /// <returns>Created new MetaDataDTO</returns>
-        public static MetaDataDTO Create(string useCaseName, string transitionName, string stateName, string layerName)
+        public static IMetaDataDTO Create(string useCaseName, string transitionName, string stateName, string layerName)
         {
-            return new MetaDataDTO
-            {
-                UseCaseName = useCaseName,
-                TransitionName = transitionName,
-                StateName = stateName,
-                LayerName = layerName
-            };
+            IMetaDataDTO metaDataDTO = new MetaDataDTO();
+            metaDataDTO.UseCaseName = useCaseName;
+            metaDataDTO.TransitionName = transitionName;
+            metaDataDTO.StateName = stateName;
+            metaDataDTO.LayerName = layerName;
+
+            return metaDataDTO;
         }
 
         #endregion

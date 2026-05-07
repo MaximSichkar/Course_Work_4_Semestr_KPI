@@ -1,7 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Contracts;
 using DataTrasferObjectInterfaces;
 
-namespace Contracts
+namespace BusinessProcessHandlers
 {
     public class StateHandler : ObservableObject, IStateHandler
     {

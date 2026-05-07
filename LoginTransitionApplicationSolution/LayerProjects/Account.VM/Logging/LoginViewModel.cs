@@ -1,6 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using BusinessProcessHandlers;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Contracts;
 using System.Windows.Input;
 
 namespace Account.VM
@@ -37,6 +37,7 @@ namespace Account.VM
             AddMetaDataToDataContainer();
             AddSearchAccountDTOToDataContainer();
             SendRequestToNextApplicationLayer();
+
             GetLoginResult();
             GetMessageFromeResponse();
 

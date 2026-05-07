@@ -17,6 +17,11 @@ namespace ManagmentSystem
             get; set;
         } = default!;
 
+        public void InitializeComponent(IDataContainer dataContainer)
+        {
+            DataContainer = dataContainer;
+        }
+
         private void GetLastMetaDataDTO()
         {
             MetaDataDTO = DataContainer.GetLastDTO<IMetaDataDTO>(TableTypes.META_DATA)!;

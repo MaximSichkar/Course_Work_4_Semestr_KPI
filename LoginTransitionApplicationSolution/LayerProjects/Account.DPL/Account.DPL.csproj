@@ -7,8 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Contract\Account.CON.csproj" />
     <ProjectReference Include="..\..\Data\Account.DTO\Account.DTO.csproj" />
-    <ProjectReference Include="..\..\ServiceProjects\Contracts\Contracts.csproj" />
+    <ProjectReference Include="..\..\ServiceProjects\BusinessProcessHandlers\BusinessProcessHandlers.csproj" />
+    <ProjectReference Include="..\..\SystemResourses\SystemResourses.csproj" />
+    <ProjectReference Include="..\..\Validation\Validation.csproj" />
   </ItemGroup>
 
 </Project>
