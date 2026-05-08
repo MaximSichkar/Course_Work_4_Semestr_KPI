@@ -1,4 +1,10 @@
-﻿using Account.VM;
+﻿using Account.DTO;
+using Account.MOD;
+using Account.VM;
+using Builder;
+using Contracts;
+using ManagmentSystem;
+using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 
 namespace WPFSystemAplication
@@ -8,10 +14,35 @@ namespace WPFSystemAplication
     /// </summary>
     public partial class LoginWindow : Window
     {
-        public LoginWindow(LoginViewModel viewModel)
+        public LoginWindow()
         {
             InitializeComponent();
-            DataContext = viewModel;
+
+            ServiceCollection services = new ServiceCollection();
+
+            ApplicationBuilder applicationBuilder = new ApplicationBuilder(services);
+
+            //Build application
+            ApplicationSystem applicationSystem = applicationBuilder.Build();
+
+            //Get State Handler subscribe to event and convert to LoginViewModel
+            IStateHandler stateHandler = applicationSystem.GetStateHandler(Account.CON.UseCaseContract.ACCOUNT, LayerContract.SL)!;
+            applicationSystem.SubscribeToEvent(stateHandler);
+            LoginViewModel loginViewModel = (LoginViewModel)stateHandler;
+
+            //Created DTO           
+            SearchAccountDTO searchAccountDTO = new SearchAccountDTO();
+
+            //Create Model
+            AccountModel accountModel = new AccountModel();
+            accountModel.SearchAccountDTO = searchAccountDTO;
+
+            loginViewModel.AccountModel = accountModel;
+
+            /* loginViewModel.AccountModel.Email = "max";
+            loginViewModel.AccountModel.Password = "1234"; */
+
+            DataContext = loginViewModel;
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
-using WPFSystemAplication;
 
 namespace WPF_UI
 {
@@ -17,6 +16,7 @@ namespace WPF_UI
         /// <param name="e"></param>
         protected override void OnStartup(StartupEventArgs e)
         {
+            /*
             base.OnStartup(e);
 
             var services = new ServiceCollection();
@@ -32,6 +32,7 @@ namespace WPF_UI
             //Startup
             var mainWindow = _serviceProvider.GetRequiredService<LoginWindow>();
             mainWindow.Show();
+            */
         }
 
     }

@@ -13,7 +13,6 @@
 	
   <ItemGroup>
     <ProjectReference Include="..\..\ApplicationProjects\ManagmentSystem\ManagmentSystem.csproj" />
-    <ProjectReference Include="..\..\ApplicationProjects\WPF_UI\WPF_UI.csproj" />
     <ProjectReference Include="..\..\DbContext\Account.DbContext.csproj" />
     <ProjectReference Include="..\..\Framework\DataTransferObjects\DataTransferObjects.csproj" />
     <ProjectReference Include="..\..\LayerProjects\Account.BL\Account.BL.csproj" />

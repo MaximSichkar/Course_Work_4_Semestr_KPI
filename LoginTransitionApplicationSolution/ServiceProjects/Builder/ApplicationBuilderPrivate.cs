@@ -13,8 +13,7 @@ namespace Builder
         {
             #region Login Transition DI registration
 
-            /// Dependencies registration
-            services.AddScoped<LoginWindow>();
+            /// Dependencies registration            
             services.AddKeyedScoped<IStateHandler, LoginViewModel>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.SL);
             services.AddKeyedScoped<ITransitionHandler, Account.BL.LoggingTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.BL);
             services.AddKeyedScoped<ITransitionHandler, Account.DPL.LoggingTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.DPL);
