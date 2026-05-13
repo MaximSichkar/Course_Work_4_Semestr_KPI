@@ -28,8 +28,14 @@ namespace Account.DAL
         private void SearchAccountInDataBase()
         {
             SearchAccountDTO searchAccountDTO = DataContainer.GetLastDTO<SearchAccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_REQUEST_SUFFIX)!;
-
-            FoundAccount = _dbContext.Account.FirstOrDefault(account => account.Email == searchAccountDTO.Email);
+            try
+            {
+                FoundAccount = _dbContext.Account.FirstOrDefault(account => account.Email == searchAccountDTO.Email);
+            }
+            catch
+            {
+                FoundAccount = null;
+            }
         }
 
         private void AddAccountDTOToDataContainer()
