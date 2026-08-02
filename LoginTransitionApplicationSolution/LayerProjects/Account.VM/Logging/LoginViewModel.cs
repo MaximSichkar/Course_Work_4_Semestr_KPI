@@ -38,8 +38,8 @@ namespace Account.VM
             AddSearchAccountDTOToDataContainer();
             SendRequestToNextApplicationLayer();
 
-            GetLoginResult();
             GetMessageFromeResponse();
+            GetLoginResult();            
 
             if (MessageRecivedFromResponse)
             {

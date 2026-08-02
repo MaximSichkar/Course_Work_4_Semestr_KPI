@@ -42,6 +42,7 @@ namespace PasswordResetTransitionResultTest
 
             loginViewModel.Login();
 
+            Assert.IsTrue(loginViewModel.LoginSuccessful);
         }
     }
 }

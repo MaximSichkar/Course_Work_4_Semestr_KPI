@@ -131,7 +131,7 @@ namespace Account.VM
             LoginSuccessful = false;
 
             IMetaDataDTO metaDataDTO = DataContainer.GetFirstDTO<IMetaDataDTO>(TableTypes.META_DATA)!;
-            if (metaDataDTO.StateName == StateContract.INITIAL)
+            if (metaDataDTO.StateName == StateContract.INITIAL && MessageDTO.MessageType != MessageTypes.Error)
             {
                 LoginSuccessful = true;
             }
