@@ -6,6 +6,8 @@ using Contracts;
 using ManagmentSystem;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
+using System.Windows.Controls;
+
 
 namespace WPFSystemAplication
 {

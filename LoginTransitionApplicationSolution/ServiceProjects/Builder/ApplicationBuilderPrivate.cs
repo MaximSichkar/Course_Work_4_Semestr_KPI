@@ -18,6 +18,12 @@ namespace Builder
             services.AddKeyedScoped<ITransitionHandler, Account.BL.LoggingTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.BL);
             services.AddKeyedScoped<ITransitionHandler, Account.DPL.LoggingTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.DPL);
             services.AddKeyedScoped<ITransitionHandler, Account.DAL.LoggingTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.DAL);
+
+            services.AddKeyedScoped<IStateHandler, RegistrationViewModel>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.SL);
+            services.AddKeyedScoped<ITransitionHandler, Account.BL.RegistrationViewModel>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.BL);
+            services.AddKeyedScoped<ITransitionHandler, Account.DPL.RegistrationViewModel>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.DPL);
+            services.AddKeyedScoped<ITransitionHandler, Account.DAL.RegistrationViewModel>(Account.CON.UseCaseContract.ACCOUNT + LayerContract.DAL);
+
             services.AddDbContext<AccountDbContext>(options =>
                 options.UseNpgsql(
                 "Host=192.168.50.10;" +

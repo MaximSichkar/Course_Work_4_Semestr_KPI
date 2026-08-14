@@ -1,27 +1,12 @@
-﻿using Account.MOD;
+﻿using BusinessProcessHandlers;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Windows.Input;
 
 namespace Account.VM
 {
-    public partial class RegistrationViewModel : ObservableObject
+    public partial class RegistrationViewModel : StateHandler
     {
-        #region Constructors
-
-        /// <summary>
-        /// DI
-        /// </summary>
-        /// <param name="loggingTransitionHandler"></param>
-        public RegistrationViewModel(Account.BL.IRegistrationTransitionHandler registrationTransitionHandler)
-        {
-            WindowLoadedCommand = new RelayCommand(OnWindowLoaded);
-            AccountModel = new AccountModel();
-            RegisterTransitionHandler = registrationTransitionHandler;
-        }
-
-        #endregion
-
         #region Data Fields        
 
         /// <summary>
@@ -38,9 +23,6 @@ namespace Account.VM
             get;
         }
 
-        [ObservableProperty]
-        AccountModel accountModel = default!;
-
         /// <summary>
         /// Start of Register transition
         /// Binds to register button
@@ -50,10 +32,12 @@ namespace Account.VM
         {
             CreateNewDataContainer();
             AddMetaDataToDataContainer();
-            AddSearchAccountDTOToRequest();
-            SendRequestToApplicationNextLayer();
-            GetRegisterResult();
+            AddSearchAccountDTOToDataContainer();
+            SendRequestToNextApplicationLayer();
+
             GetMessageFromeResponse();
+            GetRegisterResult();            
+
             if (MessageRecivedFromResponse)
             {
                 SetNotificationMessage();

@@ -2,30 +2,41 @@
 using Account.DTO;
 using Account.MOD;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Contracts;
 using DataTransferObjects;
 using DataTrasferObjectInterfaces;
 
 namespace Account.VM
 {
-    public partial class RegistrationViewModel : ObservableObject
+    public partial class RegistrationViewModel
     {
         #region Private Methods
 
+        /// <summary>
+        /// Container for data
+        /// </summary>
         private IDataContainer DataContainer
         {
             get; set;
         } = default!;
 
-        private Account.BL.IRegistrationTransitionHandler RegisterTransitionHandler
-        {
-            get; set;
-        }
+        /// <summary>
+        /// Model of Account
+        /// </summary>
+        [ObservableProperty]
+        private AccountModel accountModel = default!;
 
+        /// <summary>
+        /// Message DTO implementation
+        /// </summary>
         private MessageDTO? MessageDTO
         {
             get; set;
         }
 
+        /// <summary>
+        /// Property which implies result of registration transition
+        /// </summary>
         public bool RegistrationSuccessful
         {
             get; set;
@@ -39,11 +50,19 @@ namespace Account.VM
             }
         }
 
+        SearchAccountDTO? SearchAccountDTO
+        {
+            get; set;
+        }
+
         #endregion
 
 
         #region Private Methods
 
+        /// <summary>
+        /// Method for implementation new Data Container
+        /// </summary>
         private void CreateNewDataContainer()
         {
             DataContainer = new DataContainer();
@@ -52,17 +71,25 @@ namespace Account.VM
         /// <summary>
         /// Adds search account information to request
         /// </summary>
-        private void AddSearchAccountDTOToRequest()
+        private void AddSearchAccountDTOToDataContainer()
         {
-            DataContainer.AddDTOToDataContainer(AccountModel.SearchAccountDTO!, TableTypes.ACCOUNT + TableTypes.SEARCH_REQUEST_SUFFIX);
+            SearchAccountDTO = new SearchAccountDTO()
+            {
+                Email = AccountModel.Email,
+                Password = AccountModel.Password
+            };
+
+            DataContainer.AddDTOToDataContainer(SearchAccountDTO!, TableTypes.ACCOUNT + TableTypes.SEARCH_REQUEST_SUFFIX);
         }
 
         /// <summary>
-        /// Sends request to next layer of logic
+        /// Rises event that sends request to next layer of logic
         /// </summary>
-        private void SendRequestToApplicationNextLayer()
+        private void SendRequestToNextApplicationLayer()
         {
-            RegisterTransitionHandler.ProcessRequest(DataContainer);
+            AddMetaDataToDataContainer();
+            RaiseServiceRequest(DataContainer);
+            DeleteLastMetaData();
         }
 
         /// <summary>
@@ -70,13 +97,13 @@ namespace Account.VM
         /// </summary>
         private void AddMetaDataToDataContainer()
         {
-            MetaDataDTO metaDataDTO = new MetaDataDTO();
+            IMetaDataDTO metaDataDTO = MetaDataDTO.Create(UseCaseContract.ACCOUNT, TransitionContract.LOGGING, StateContract.LOGIN, LayerContract.SL);
+            DataContainer.AddDTOToDataContainer<IMetaDataDTO>(metaDataDTO, TableTypes.META_DATA);
+        }
 
-            metaDataDTO.TransitionName = TransitionContract.REGISTRATION;
-            metaDataDTO.StateName = StateContract.REGISTRATION;
-            metaDataDTO.UseCaseName = UseCaseContract.ACCOUNT;
-
-            DataContainer.AddDTOToDataContainer(metaDataDTO, TableTypes.META_DATA);
+        private void DeleteLastMetaData()
+        {
+            DataContainer.DeleteLastDTO<IMetaDataDTO>(TableTypes.META_DATA);
         }
 
         /// <summary>
@@ -84,7 +111,7 @@ namespace Account.VM
         /// </summary>
         private void GetMessageFromeResponse()
         {
-            MessageDTO = DataContainer.GetDTO<MessageDTO>(TableTypes.MESSAGE)!;
+            MessageDTO = DataContainer.GetFirstDTO<MessageDTO>(TableTypes.MESSAGE)!;
         }
 
         /// <summary>
@@ -94,8 +121,8 @@ namespace Account.VM
         {
             RegistrationSuccessful = false;
 
-            MetaDataDTO metaDataDTO = DataContainer.GetDTO<MetaDataDTO>(TableTypes.META_DATA)!; //What purpose serves this function?
-            if (metaDataDTO.StateName == StateContract.INITIAL)
+            IMetaDataDTO metaDataDTO = DataContainer.GetFirstDTO<IMetaDataDTO>(TableTypes.META_DATA)!;
+            if (metaDataDTO.StateName == StateContract.INITIAL && MessageDTO.MessageType != MessageTypes.Error)
             {
                 RegistrationSuccessful = true;
             }
