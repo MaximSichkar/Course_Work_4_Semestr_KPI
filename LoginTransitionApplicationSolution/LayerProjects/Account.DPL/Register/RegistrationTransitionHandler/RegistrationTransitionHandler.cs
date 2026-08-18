@@ -1,26 +1,18 @@
-﻿using DataTrasferObjectInterfaces;
+﻿using BusinessProcessHandlers;
+using DataTrasferObjectInterfaces;
 
 namespace Account.DPL
 {
     /// <summary>
     /// Class which is part of Register trasition (DataProcessLogic) 
     /// </summary>
-    public partial class RegistrationTransitionHandler : IRegistrationTransitionHandler
+    public partial class RegistrationTransitionHandler : TransitionHandler
     {
-        /// <summary>
-        /// DI
-        /// </summary>
-        /// <param name="loggingTransitionHandler"></param>
-        public RegistrationTransitionHandler(Account.DAL.IRegistrationTransitionHandler registrationTransitionHandler)
-        {
-            RegisterTransitionHandler = registrationTransitionHandler;
-        }
-
         /// <summary>
         /// Method which is part of Register trasition (DataProcessLogic) 
         /// </summary>
         /// <param name="dataContainer"></param>
-        public void ProcessRequest(IDataContainer dataContainer)
+        public override void ProcessRequest(IDataContainer dataContainer)
         {
             InitializeComponent(dataContainer);
             GetSearchRequestFromContainer();
@@ -31,7 +23,7 @@ namespace Account.DPL
                 GetSearchRequestFromContainer();
                 GetSearchResultFromContainer();
                 ProcessAccountData();
-                if (SearchAccountDTO.RegisterProcessingResult == CoreComponents.RegisterProcessingResult.RegistrationAllowed)
+                if (SearchAccountDTO.RegistrationProcessingResult == CoreComponents.RegistrationProcessingResult.RegistrationAllowed)
                 {
                     RegisterAccountToDataBase();
                 }

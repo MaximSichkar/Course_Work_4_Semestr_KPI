@@ -1,7 +1,9 @@
 ﻿using Account.CON;
+using Account.DbContext;
 using Account.DTO;
+using Contracts;
 using DataTrasferObjectInterfaces;
-using MaSystemResourses;
+using SystemResourses;
 
 namespace Account.DAL
 {
@@ -9,39 +11,35 @@ namespace Account.DAL
     {
         #region Private properties
 
-        /// <summary>
-        /// DataContainer property implementation 
-        /// </summary>
-        private DataTrasferObjectInterfaces.IDataContainer DataContainer
-        {
-            get; set;
-        } = default!;
-
         private AccountDTO? FoundAccount;
 
         private AccountDTO AccountToRegister = new AccountDTO();
 
+        private readonly AccountDbContext _dbContext;
+
         #endregion
 
-        #region Private methods
-
-        /// <summary>l
-        /// Method wich initializing components
-        /// </summary>
-        /// <param name="dataContainer"></param>
-        public void InitializeComponent(IDataContainer dataContainer)
+        public RegistrationTransitionHandler(AccountDbContext dbContext)
         {
-            DataContainer = dataContainer;
+            _dbContext = dbContext;
         }
+
+        #region Private methods
 
         /// <summary>
         /// Method сhecks the coincidences in data base
         /// </summary>
         private void SearchAccountInDataBase()
         {
-            SearchAccountDTO searchAccountDTO = DataContainer.GetDTO<SearchAccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_REQUEST_SUFFIX)!;
-
-            FoundAccount = _dbContext.Account.FirstOrDefault(account => account.Email == searchAccountDTO.Email);
+            SearchAccountDTO searchAccountDTO = DataContainer.GetLastDTO<SearchAccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_REQUEST_SUFFIX)!;
+            try
+            {
+                FoundAccount = _dbContext.Account.FirstOrDefault(account => account.Email == searchAccountDTO.Email);
+            }
+            catch
+            {
+                FoundAccount = null;
+            }
         }
 
         /// <summary>
@@ -49,7 +47,7 @@ namespace Account.DAL
         /// </summary>
         private void AddAccountDTOToDataBase()
         {
-            SearchAccountDTO searchAccountDTO = DataContainer.GetDTO<SearchAccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_REQUEST_SUFFIX)!;
+            SearchAccountDTO searchAccountDTO = DataContainer.GetLastDTO<SearchAccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_REQUEST_SUFFIX)!;
 
             AccountToRegister.Email = searchAccountDTO.Email;
             AccountToRegister.Password = searchAccountDTO.Password;

@@ -106,7 +106,7 @@ namespace Account.VM
         /// </summary>
         private void AddMetaDataToDataContainer()
         {
-            IMetaDataDTO metaDataDTO = MetaDataDTO.Create(UseCaseContract.ACCOUNT, TransitionContract.LOGGING, StateContract.LOGIN, LayerContract.SL);
+            IMetaDataDTO metaDataDTO = MetaDataDTO.Create(UseCaseContract.ACCOUNT, StateContract.LOGIN, TransitionContract.LOGGING, LayerContract.SL);
             DataContainer.AddDTOToDataContainer<IMetaDataDTO>(metaDataDTO, TableTypes.META_DATA);
         }
 

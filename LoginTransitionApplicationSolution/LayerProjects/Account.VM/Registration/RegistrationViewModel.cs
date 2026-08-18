@@ -28,7 +28,7 @@ namespace Account.VM
         /// Binds to register button
         /// </summary>
         [RelayCommand]
-        void Register()
+        public void Register()
         {
             CreateNewDataContainer();
             AddMetaDataToDataContainer();

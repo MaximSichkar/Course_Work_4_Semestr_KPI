@@ -32,6 +32,14 @@ namespace Account.DTI
             get; set;
         }
 
+        /// <summary>
+        /// Gets or sets result of the user's last registration attempt
+        /// </summary>
+        RegistrationProcessingResult RegistrationProcessingResult
+        {
+            get; set;
+        }
+
         #endregion
     }
 }

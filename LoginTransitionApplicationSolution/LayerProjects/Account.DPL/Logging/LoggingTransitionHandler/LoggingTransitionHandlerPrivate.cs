@@ -65,7 +65,7 @@ namespace Account.DPL
         /// </summary>
         private void SendRequestToNextApplicationLayer()
         {
-            CreateMetaData(UseCaseContract.ACCOUNT, TransitionContract.LOGGING, StateContract.LOGIN, LayerContract.DPL);
+            CreateMetaData(UseCaseContract.ACCOUNT, StateContract.LOGIN, TransitionContract.CHECKFORCOINCIDANCE, LayerContract.DPL);
             AddMetaData();
             RaiseServiceRequest(DataContainer);
             DeleteLastMetaData();

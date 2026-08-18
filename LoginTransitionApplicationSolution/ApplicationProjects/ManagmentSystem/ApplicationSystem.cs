@@ -48,13 +48,13 @@ namespace ManagmentSystem
         {
             InitializeComponent(dataContainer);
             GetLastMetaDataDTO();
-            ITransitionHandler transitionHandler = ServiceProvider.GetRequiredKeyedService<ITransitionHandler>(MetaDataDTO.UseCaseName + MetaDataDTO.LayerName);
+            ITransitionHandler transitionHandler = ServiceProvider.GetRequiredKeyedService<ITransitionHandler>(MetaDataDTO.UseCaseName + MetaDataDTO.StateName + MetaDataDTO.TransitionName + MetaDataDTO.LayerName);
             return transitionHandler;
         }
 
-        public IStateHandler GetStateHandler(string useCaseName, string layerName)
+        public IStateHandler GetStateHandler(string useCaseName, string stateName, string layerName)
         {
-            IStateHandler stateHandler = ServiceProvider.GetRequiredKeyedService<IStateHandler>(useCaseName + layerName);
+            IStateHandler stateHandler = ServiceProvider.GetRequiredKeyedService<IStateHandler>(useCaseName + stateName + layerName);
             return stateHandler;
         }
 

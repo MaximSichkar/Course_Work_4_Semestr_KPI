@@ -1,6 +1,6 @@
 ﻿using Account.CON;
 using Account.DTO;
-using DataTransferObjects;
+using Contracts;
 using DataTrasferObjectInterfaces;
 
 namespace Account.BL
@@ -9,28 +9,10 @@ namespace Account.BL
     {
         #region private Properties
 
-        private Account.DPL.IRegistrationTransitionHandler RegisterTransitionHandler
-        {
-            get; set;
-        }
-
-        IDataContainer DataContainer
-        {
-            get; set;
-        } = default!;
-
         /// <summary>
         /// DTO that contains information for account lookup
         /// </summary>
         private SearchAccountDTO SearchAccountDTO
-        {
-            get; set;
-        } = default!;
-
-        /// <summary>
-        /// DTO which contains metadata
-        /// </summary>
-        private MetaDataDTO MetaDataDTO
         {
             get; set;
         } = default!;
@@ -45,34 +27,36 @@ namespace Account.BL
         /// </summary>
         private void SendRequestToApplicationNextLayer()
         {
-            RegisterTransitionHandler.ProcessRequest(DataContainer);
+            CreateMetaData(UseCaseContract.ACCOUNT, StateContract.REGISTER, TransitionContract.REGISTERING, LayerContract.BL);
+            AddMetaData();
+            RaiseServiceRequest(DataContainer);
+            DeleteLastMetaData();
         }
 
         private void ProcessResponseFromApplicationNextLayer()
         {
             GetSearchRequestFromContainer();
-            GetMetaDataFromContainer();
+            GetMetaDataDTO();
 
 
             //TODO
-            switch (SearchAccountDTO.RegisterProcessingResult)
+            switch (SearchAccountDTO.RegistrationProcessingResult)
             {
-                case CoreComponents.RegisterProcessingResult.AccountAlreadyExist:
+                case CoreComponents.RegistrationProcessingResult.AccountAlreadyExist:
                     break;
 
-                case CoreComponents.RegisterProcessingResult.RegistrationAllowed:
+                case CoreComponents.RegistrationProcessingResult.RegistrationAllowed:
                     MetaDataDTO.StateName = StateContract.INITIAL;
                     break;
             }
         }
 
         /// <summary>
-        /// Method which initializes components
+        /// Method which gets metadata from container
         /// </summary>
-        /// <param name="dataContainer"></param>
-        private void InitializeComponent(IDataContainer dataContainer)
+        private void GetMetaDataDTO()
         {
-            DataContainer = dataContainer;
+            MetaDataDTO = DataContainer.GetMetaDataByLayer(LayerContract.SL)!;
         }
 
         /// <summary>
@@ -80,15 +64,7 @@ namespace Account.BL
         /// </summary>
         private void GetSearchRequestFromContainer()
         {
-            SearchAccountDTO = DataContainer.GetDTO<SearchAccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_REQUEST_SUFFIX)!;
-        }
-
-        /// <summary>
-        /// Method which gets metadata from container
-        /// </summary>
-        private void GetMetaDataFromContainer()
-        {
-            MetaDataDTO = DataContainer.GetDTO<MetaDataDTO>(TableTypes.META_DATA)!;
+            SearchAccountDTO = DataContainer.GetLastDTO<SearchAccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_REQUEST_SUFFIX)!;
         }
 
         #endregion

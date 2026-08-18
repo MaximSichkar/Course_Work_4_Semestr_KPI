@@ -35,6 +35,14 @@ namespace Account.DTO
             get; set;
         }
 
+        /// <summary>
+        /// Gets or sets result of the user's last registration attempt
+        /// </summary>
+        public RegistrationProcessingResult RegistrationProcessingResult
+        {
+            get; set;
+        }
+
         #endregion
     }
 }

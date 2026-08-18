@@ -8,5 +8,5 @@
         LoginSuccessful,
         AccountNotFound,
         AccountFoundPasswordMissmatched
-    }
+    }    
 }

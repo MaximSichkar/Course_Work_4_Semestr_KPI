@@ -27,7 +27,7 @@ namespace Account.BL
         /// </summary>
         private void SendRequestToNextApplicationLayer()
         {
-            CreateMetaData(UseCaseContract.ACCOUNT, TransitionContract.LOGGING, StateContract.LOGIN, LayerContract.BL);
+            CreateMetaData(UseCaseContract.ACCOUNT, StateContract.LOGIN, TransitionContract.LOGGING, LayerContract.BL);
             AddMetaData();
             RaiseServiceRequest(DataContainer);
             DeleteLastMetaData();

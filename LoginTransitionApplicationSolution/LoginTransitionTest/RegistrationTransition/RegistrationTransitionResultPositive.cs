@@ -9,12 +9,12 @@ using Microsoft.Extensions.DependencyInjection;
 namespace PasswordResetTransitionResultTest
 {
     [TestClass]
-    public partial class LoginTransitionTests
+    public partial class RegistrationTransitionTests
     {
         private ServiceProvider? _serviceProvider;
 
         [TestMethod]
-        public void LoginTransitionResultPositive()
+        public void RegistrationTransitionResultPositive()
         {
             ServiceCollection services = new ServiceCollection();
 
@@ -23,10 +23,10 @@ namespace PasswordResetTransitionResultTest
             //Build application
             ApplicationSystem applicationSystem = applicationBuilder.Build();
 
-            //Get State Handler subscribe to event and convert to LoginViewModel
-            IStateHandler stateHandler = applicationSystem.GetStateHandler(Account.CON.UseCaseContract.ACCOUNT, Account.CON.StateContract.LOGIN, LayerContract.SL)!;
+            //Get State Handler subscribe to event and convert to RegistrationViewModel
+            IStateHandler stateHandler = applicationSystem.GetStateHandler(Account.CON.UseCaseContract.ACCOUNT, Account.CON.StateContract.REGISTER, LayerContract.SL)!;
             applicationSystem.SubscribeToEvent(stateHandler);
-            LoginViewModel loginViewModel = (LoginViewModel)stateHandler;
+            RegistrationViewModel registrationViewModel = (RegistrationViewModel)stateHandler;
 
             //Created DTO           
             SearchAccountDTO searchAccountDTO = new SearchAccountDTO();
@@ -35,14 +35,14 @@ namespace PasswordResetTransitionResultTest
             AccountModel accountModel = new AccountModel();
             accountModel.SearchAccountDTO = searchAccountDTO;
 
-            loginViewModel.AccountModel = accountModel;
+            registrationViewModel.AccountModel = accountModel;
 
-            loginViewModel.AccountModel.Email = "max";
-            loginViewModel.AccountModel.Password = "1234";
+            registrationViewModel.AccountModel.Email = "maxim";
+            registrationViewModel.AccountModel.Password = "1234";
 
-            loginViewModel.Login();
+            registrationViewModel.Register();
 
-            Assert.IsTrue(loginViewModel.LoginSuccessful);
+            Assert.IsTrue(registrationViewModel.RegistrationSuccessful);
         }
     }
 }

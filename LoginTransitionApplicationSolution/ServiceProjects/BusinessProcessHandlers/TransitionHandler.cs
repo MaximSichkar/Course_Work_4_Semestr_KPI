@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using DataTrasferObjectInterfaces;
+using static System.TimeZoneInfo;
 
 namespace BusinessProcessHandlers
 {
@@ -45,9 +46,9 @@ namespace BusinessProcessHandlers
 
         #region Meta Data manipulation
 
-        protected void CreateMetaData(string useCaseName, string transitionName, string stateName, string layerName)
+        protected void CreateMetaData(string useCaseName, string stateName, string transitionName, string layerName)
         {
-            MetaDataDTO = DataTransferObjects.MetaDataDTO.Create(useCaseName, transitionName, stateName, layerName);
+            MetaDataDTO = DataTransferObjects.MetaDataDTO.Create(useCaseName, stateName, transitionName, layerName);
         }
 
         protected void AddMetaData()

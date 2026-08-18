@@ -1,17 +1,14 @@
-﻿using Account.DTO;
+﻿using Account.CON;
+using Account.DTO;
+using Contracts;
 using DataTrasferObjectInterfaces;
-using MaSystemResourses;
+using SystemResourses;
 
 namespace Account.DPL
 {
     public partial class RegistrationTransitionHandler
     {
         #region Private properties
-
-        private Account.DAL.IRegistrationTransitionHandler RegisterTransitionHandler
-        {
-            get; set;
-        }
 
         /// <summary>
         /// Property which contains user data validation result
@@ -20,14 +17,6 @@ namespace Account.DPL
         {
             get; set;
         }
-
-        /// <summary>
-        /// DataContainer property implementation 
-        /// </summary>
-        private DataTrasferObjectInterfaces.IDataContainer DataContainer
-        {
-            get; set;
-        } = default!;
 
         private SearchAccountDTO SearchAccountDTO
         {
@@ -44,16 +33,6 @@ namespace Account.DPL
 
         #region Private methods
 
-
-        /// <summary>
-        /// Method wich initializing components
-        /// </summary>
-        /// <param name="dataContainer"></param>
-        private void InitializeComponent(IDataContainer dataContainer)
-        {
-            DataContainer = dataContainer;
-        }
-
         /// <summary>
         /// Processes the account data obtained from storage and sets the registration result
         /// </summary>
@@ -61,13 +40,13 @@ namespace Account.DPL
         {
             if (AccountDTO == null)
             {
-                SearchAccountDTO.RegisterProcessingResult = CoreComponents.RegisterProcessingResult.RegistrationAllowed;
+                SearchAccountDTO.RegistrationProcessingResult = CoreComponents.RegistrationProcessingResult.RegistrationAllowed;
                 return;
             }
 
             if (SearchAccountDTO.Email == AccountDTO.Email)
             {
-                SearchAccountDTO.RegisterProcessingResult = CoreComponents.RegisterProcessingResult.AccountAlreadyExist;
+                SearchAccountDTO.RegistrationProcessingResult = CoreComponents.RegistrationProcessingResult.AccountAlreadyExist;
                 DataContainer.AddDTOToDataContainer<MessageDTO>(MessageDTO.Create(Resources.AccountAlreadyExist, MessageTypes.Error), TableTypes.MESSAGE);
             }
         }
@@ -77,7 +56,10 @@ namespace Account.DPL
         /// </summary>
         private void CheckForCoincidenceDataFromStorage()
         {
-            RegisterTransitionHandler.ProcessSearchRequest(DataContainer);
+            CreateMetaData(UseCaseContract.ACCOUNT, StateContract.REGISTER, TransitionContract.CHECKFORCOINCIDANCE, LayerContract.DPL);
+            AddMetaData();
+            RaiseServiceRequest(DataContainer);
+            DeleteLastMetaData();
         }
 
         /// <summary>
@@ -85,7 +67,10 @@ namespace Account.DPL
         /// </summary>
         private void RegisterAccountToDataBase()
         {
-            RegisterTransitionHandler.ProcessRegisterRequest(DataContainer);
+            CreateMetaData(UseCaseContract.ACCOUNT, StateContract.REGISTER, TransitionContract.REGISTERACCOUNT, LayerContract.DPL);
+            AddMetaData();
+            RaiseServiceRequest(DataContainer);
+            DeleteLastMetaData();
         }
 
         /// <summary>
@@ -111,7 +96,7 @@ namespace Account.DPL
         /// </summary>
         private void GetSearchRequestFromContainer()
         {
-            SearchAccountDTO = DataContainer.GetDTO<SearchAccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_REQUEST_SUFFIX)!;
+            SearchAccountDTO = DataContainer.GetLastDTO<SearchAccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_REQUEST_SUFFIX)!;
         }
 
         /// <summary>
@@ -119,7 +104,7 @@ namespace Account.DPL
         /// </summary>
         private void GetSearchResultFromContainer()
         {
-            AccountDTO = DataContainer.GetDTO<AccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_RESULT_SUFFIX)!;
+            AccountDTO = DataContainer.GetLastDTO<AccountDTO>(TableTypes.ACCOUNT + TableTypes.SEARCH_RESULT_SUFFIX)!;
         }
 
         #endregion
