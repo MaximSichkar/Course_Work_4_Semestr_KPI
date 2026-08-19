@@ -47,7 +47,7 @@ namespace DataTrasferObject
         public DateTime? DayOfCreation
         {
             get; set;
-        } = DateTime.Now;
+        } = DateTime.UtcNow;
 
         /// <summary>
         /// Day of change data of this object
@@ -55,7 +55,7 @@ namespace DataTrasferObject
         public DateTime? DayOfChangeData
         {
             get; set;
-        } = DateTime.Now;
+        } = DateTime.UtcNow;
 
         /// <summary>
         /// Indentifier of this object

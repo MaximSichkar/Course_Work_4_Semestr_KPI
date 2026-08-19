@@ -54,9 +54,9 @@ namespace Account.DPL
         /// <summary>
         /// Method which is part of Registration trasition, going to access logic for сheck the coincidences in data base
         /// </summary>
-        private void CheckForCoincidenceDataFromStorage()
+        private void CheckIfAccountExists()
         {
-            CreateMetaData(UseCaseContract.ACCOUNT, StateContract.REGISTER, TransitionContract.CHECKFORCOINCIDANCE, LayerContract.DPL);
+            CreateMetaData(UseCaseContract.ACCOUNT, StateContract.REGISTER, TransitionContract.CHECKIFACCOUNTEXISTS, LayerContract.DPL);
             AddMetaData();
             RaiseServiceRequest(DataContainer);
             DeleteLastMetaData();

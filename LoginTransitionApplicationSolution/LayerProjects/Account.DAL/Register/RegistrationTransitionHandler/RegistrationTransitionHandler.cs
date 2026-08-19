@@ -17,29 +17,7 @@ namespace Account.DAL
         public override void ProcessRequest(IDataContainer dataContainer)
         {
             InitializeComponent(dataContainer);
-            ProcessSearchRequest();
-
-            if ()
-            {
-                InitializeComponent(dataContainer);
-                ProcessRegisterRequest();
-
-            }
-        }
-
-        #region Buisiness methods
-
-        public void ProcessSearchRequest()
-        {            
-            SearchAccountInDataBase();
-            AddAccountDTOToDataContainer();
-        }
-
-        public void ProcessRegisterRequest()
-        {            
             AddAccountDTOToDataBase();
         }
-
-        #endregion
     }
 }

@@ -31,7 +31,7 @@ namespace ManagmentSystem
 
             ITransitionHandler transitionHandler = applicationSystem.GetTransitionHandler(dataContainer);
 
-            applicationSystem.SubscribeToEvent(transitionHandler);
+            applicationSystem.SubscribeToEvent(transitionHandler);           
             transitionHandler.ProcessRequest(DataContainer);
             applicationSystem.UnSubscribeToEvent(transitionHandler);
         }

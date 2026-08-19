@@ -17,12 +17,12 @@ namespace Builder
             services.AddKeyedScoped<IStateHandler, LoginViewModel>(Account.CON.UseCaseContract.ACCOUNT + Account.CON.StateContract.LOGIN + LayerContract.SL);
             services.AddKeyedScoped<ITransitionHandler, Account.BL.LoggingTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + Account.CON.StateContract.LOGIN + Account.CON.TransitionContract.LOGGING + LayerContract.BL);
             services.AddKeyedScoped<ITransitionHandler, Account.DPL.LoggingTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + Account.CON.StateContract.LOGIN + Account.CON.TransitionContract.LOGGING + LayerContract.DPL);
-            services.AddKeyedScoped<ITransitionHandler, Account.DAL.LoggingTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + Account.CON.StateContract.LOGIN + Account.CON.TransitionContract.CHECKFORCOINCIDANCE + LayerContract.DAL);
+            services.AddKeyedScoped<ITransitionHandler, Account.DAL.LoggingTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + Account.CON.StateContract.LOGIN + Account.CON.TransitionContract.CHECKIFACCOUNTEXISTS + LayerContract.DAL);
 
             services.AddKeyedScoped<IStateHandler, RegistrationViewModel>(Account.CON.UseCaseContract.ACCOUNT + Account.CON.StateContract.REGISTER + LayerContract.SL);
             services.AddKeyedScoped<ITransitionHandler, Account.BL.RegistrationTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + Account.CON.StateContract.REGISTER + Account.CON.TransitionContract.REGISTERING + LayerContract.BL);
             services.AddKeyedScoped<ITransitionHandler, Account.DPL.RegistrationTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + Account.CON.StateContract.REGISTER +  Account.CON.TransitionContract.REGISTERING + LayerContract.DPL);
-            services.AddKeyedScoped<ITransitionHandler, Account.DAL.RegistrationTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + Account.CON.StateContract.REGISTER + Account.CON.TransitionContract.CHECKFORCOINCIDANCE + LayerContract.DAL);
+            services.AddKeyedScoped<ITransitionHandler, Account.DAL.CheckIfAccountExistsTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + Account.CON.StateContract.REGISTER + Account.CON.TransitionContract.CHECKIFACCOUNTEXISTS + LayerContract.DAL);
             services.AddKeyedScoped<ITransitionHandler, Account.DAL.RegistrationTransitionHandler>(Account.CON.UseCaseContract.ACCOUNT + Account.CON.StateContract.REGISTER +  Account.CON.TransitionContract.REGISTERACCOUNT + LayerContract.DAL);
 
             services.AddDbContext<AccountDbContext>(options =>

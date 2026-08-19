@@ -26,9 +26,9 @@ namespace WPFSystemAplication
             ApplicationSystem applicationSystem = applicationBuilder.Build();
 
             //Get State Handler subscribe to event and convert to LoginViewModel
-            IStateHandler stateHandler = applicationSystem.GetStateHandler(Account.CON.UseCaseContract.ACCOUNT, LayerContract.SL)!;
+            IStateHandler stateHandler = applicationSystem.GetStateHandler(Account.CON.UseCaseContract.ACCOUNT, Account.CON.StateContract.REGISTER, LayerContract.SL)!;
             applicationSystem.SubscribeToEvent(stateHandler);
-            RegistrationWindow registrationViewModel = (RegistrationWindow)stateHandler;
+            RegistrationViewModel registrationViewModel = (RegistrationViewModel)stateHandler;
 
             //Created DTO           
             SearchAccountDTO searchAccountDTO = new SearchAccountDTO();

@@ -28,7 +28,7 @@ namespace WPFSystemAplication
             ApplicationSystem applicationSystem = applicationBuilder.Build();
 
             //Get State Handler subscribe to event and convert to LoginViewModel
-            IStateHandler stateHandler = applicationSystem.GetStateHandler(Account.CON.UseCaseContract.ACCOUNT, LayerContract.SL)!;
+            IStateHandler stateHandler = applicationSystem.GetStateHandler(Account.CON.UseCaseContract.ACCOUNT, Account.CON.StateContract.LOGIN, LayerContract.SL)!;
             applicationSystem.SubscribeToEvent(stateHandler);
             LoginViewModel loginViewModel = (LoginViewModel)stateHandler;
 

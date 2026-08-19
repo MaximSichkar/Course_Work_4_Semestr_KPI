@@ -19,7 +19,7 @@ namespace Account.DPL
             ValidateInputData();
             if (InputDataValid)
             {
-                CheckForCoincidenceDataFromStorage();
+                CheckIfAccountExists();
                 GetSearchRequestFromContainer();
                 GetSearchResultFromContainer();
                 ProcessAccountData();
