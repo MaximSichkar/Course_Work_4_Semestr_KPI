@@ -37,7 +37,7 @@ namespace PasswordResetTransitionResultTest
 
             registrationViewModel.AccountModel = accountModel;
 
-            registrationViewModel.AccountModel.Email = "maxim";
+            registrationViewModel.AccountModel.Email = "maximka";
             registrationViewModel.AccountModel.Password = "1234";
 
             registrationViewModel.Register();
